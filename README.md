@@ -106,7 +106,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![Next.js][Next.js]][Next-url]
 * [![Angular.io][Angular.io]][Angular-url]
 * [![Bootstrap.com][Bootstrap.com]][Bootstrap-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
