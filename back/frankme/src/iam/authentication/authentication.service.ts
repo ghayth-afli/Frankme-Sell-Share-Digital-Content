@@ -38,7 +38,7 @@ export class AuthenticationService {
       console.error(`Error in signUp authentication service : ${err}`);
       const pgUniqueViolationErrorCode = "23505";
       if (err.code === pgUniqueViolationErrorCode) {
-        throw new ConflictException();
+        throw new ConflictException("User exits with the given email");
       }
       throw err;
     }
