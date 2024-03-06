@@ -1,0 +1,19 @@
+###sign up
+POST http://localhost:3000/authentication/sign-up
+Content-Type: application/json
+
+{"email": "test1@gmail.com",
+"password": "123456",
+"firstName": "test1",
+"lastName": "test1",
+"phone": "1234567890"}
+
+
+###sign in
+POST http://localhost:3000/authentication/sign-in
+Content-Type: application/json
+
+{
+    "email": "test1@gmail.com",
+    "password": "123456"
+}
