@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:frankme": "node dist/frankme/server/server.mjs"
+    "serve:ssr:frankme": "node dist/frankme/server/server.mjs",
+    "build:tailwind": "npx tailwindcss build styles.css -o output.css --watch"
   },
   "private": true,
   "dependencies": {
