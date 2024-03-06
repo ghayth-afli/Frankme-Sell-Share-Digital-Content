@@ -1,5 +1,5 @@
 ###sign up
-POST http://localhost:3000/authentication/sign-up
+POST http://localhost:3000/authentication/sign-up 
 Content-Type: application/json
 
 {"email": "test1@gmail.com",
@@ -9,7 +9,7 @@ Content-Type: application/json
 "phone": "1234567890"}
 
 
-###sign in
+###sign in without 2fa
 POST http://localhost:3000/authentication/sign-in
 Content-Type: application/json
 
@@ -17,6 +17,24 @@ Content-Type: application/json
     "email": "test1@gmail.com",
     "password": "123456"
 }
+
+###sign in with 2fa
+POST http://localhost:3000/authentication/sign-in
+Content-Type: application/json
+
+{
+    "email": "test1@gmail.com",
+    "password": "123456",
+    "tfaCode": "884444"
+
+}
+
+
+###2fa
+POST http://localhost:3000/authentication/2fa/generate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwiaWF0IjoxNzA5NzYzNzM4LCJleHAiOjE3MDk4NTAxMzgsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.q99nfMEeBBUetFMR5NrZ6zhVSHfjveuJGt-JgULH-RM
+
 
 ###refresh token
 POST http://localhost:3000/authentication/refresh-tokens

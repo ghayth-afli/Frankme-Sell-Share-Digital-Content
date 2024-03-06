@@ -14,6 +14,7 @@ import { ConfigType } from "@nestjs/config";
 import jwtConfig from "../config/jwt.config";
 import { JwtService } from "@nestjs/jwt";
 import { RefreshTokenDto } from "./dto/refresh-token.dto";
+import { OtpAuthenticationService } from "./otp-authentication.service";
 
 @Injectable()
 export class AuthenticationService {
@@ -22,7 +23,8 @@ export class AuthenticationService {
     private readonly hashingService: HashingService,
     private readonly jwtService: JwtService,
     @Inject(jwtConfig.KEY)
-    private readonly jwtConfiguration: ConfigType<typeof jwtConfig>
+    private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
+    private readonly otpAuthService: OtpAuthenticationService
   ) {}
 
   async signUp(signUpDto: SignUpDto) {
@@ -59,6 +61,15 @@ export class AuthenticationService {
       );
       if (!isEqual) {
         throw new UnauthorizedException("Password does not match");
+      }
+      if (user.isTfaEnabled) {
+        const isValid = this.otpAuthService.verifyCode(
+          signInDto.tfaCode,
+          user.tfaSecret
+        );
+        if (!isValid) {
+          throw new UnauthorizedException("Invalid 2FA code");
+        }
       }
       return await this.generateTokens(user);
     } catch (err) {

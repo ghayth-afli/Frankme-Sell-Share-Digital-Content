@@ -11,6 +11,7 @@ import { ConfigModule } from "@nestjs/config";
 import { APP_GUARD } from "@nestjs/core";
 import { AccessTokenGuard } from "./authentication/guards/access-token.guard";
 import { AuthenticationGuard } from "./authentication/guards/authentication.guard";
+import { OtpAuthenticationService } from './authentication/otp-authentication.service';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { AuthenticationGuard } from "./authentication/guards/authentication.guar
     },
     AuthenticationService,
     AccessTokenGuard,
+    OtpAuthenticationService,
   ],
   controllers: [AuthenticationController],
 })
