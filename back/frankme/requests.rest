@@ -17,3 +17,16 @@ Content-Type: application/json
     "email": "test1@gmail.com",
     "password": "123456"
 }
+
+###refresh token
+POST http://localhost:3000/authentication/refresh-tokens
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTcwOTc1OTYxNiwiZXhwIjoxNzA5OTMyNDE2LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.HKtO3av11s3gqkjxIphQRzed4VABUl9qDESdY5phQvQ"
+}
+
+###get user
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwiaWF0IjoxNzA5NzUyOTkwLCJleHAiOjE3MDk4MzkzOTAsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.psdD1gImX2AdrpbnUZv3hanZ5rRLAUkqrWxz38RwQyU
+
