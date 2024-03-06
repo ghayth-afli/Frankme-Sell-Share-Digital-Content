@@ -13,6 +13,7 @@ import { SignInDto } from "./dto/sign-in.dto";
 import { ConfigType } from "@nestjs/config";
 import jwtConfig from "../config/jwt.config";
 import { JwtService } from "@nestjs/jwt";
+import { RefreshTokenDto } from "./dto/refresh-token.dto";
 
 @Injectable()
 export class AuthenticationService {
@@ -59,22 +60,52 @@ export class AuthenticationService {
       if (!isEqual) {
         throw new UnauthorizedException("Password does not match");
       }
-      const accessToken = await this.jwtService.signAsync(
-        {
-          sub: user.id,
-          email: user.email,
-        },
-        {
-          audience: this.jwtConfiguration.audience,
-          issuer: this.jwtConfiguration.issuer,
-          secret: this.jwtConfiguration.secret,
-          expiresIn: this.jwtConfiguration.accessTokenTtl,
-        }
-      );
-      return { accessToken };
+      return await this.generateTokens(user);
     } catch (err) {
       console.error(`Error in signIn authentication service : ${err}`);
       throw err;
     }
+  }
+  public async generateTokens(user: User) {
+    const [accessToken, refreshToken] = await Promise.all([
+      this.signToken(user.id, this.jwtConfiguration.accessTokenTtl, {
+        email: user.email,
+      }),
+      this.signToken(user.id, this.jwtConfiguration.refreshTokenTtl),
+    ]);
+    return { accessToken, refreshToken };
+  }
+
+  async refreshTokens(refreshTokensDto: RefreshTokenDto) {
+    try {
+      const { sub } = await this.jwtService.verifyAsync(
+        refreshTokensDto.refreshToken,
+        {
+          secret: this.jwtConfiguration.secret,
+          audience: this.jwtConfiguration.audience,
+          issuer: this.jwtConfiguration.issuer,
+        }
+      );
+
+      const user = await this.usersRepository.findOneByOrFail({ id: sub });
+      return this.generateTokens(user);
+    } catch (error) {
+      throw new UnauthorizedException();
+    }
+  }
+
+  private async signToken(userId: number, expiresIn: number, payload?) {
+    return await this.jwtService.signAsync(
+      {
+        sub: userId,
+        ...payload,
+      },
+      {
+        audience: this.jwtConfiguration.audience,
+        issuer: this.jwtConfiguration.issuer,
+        secret: this.jwtConfiguration.secret,
+        expiresIn,
+      }
+    );
   }
 }
