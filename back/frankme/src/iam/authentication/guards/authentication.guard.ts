@@ -31,6 +31,11 @@ export class AuthenticationGuard implements CanActivate {
 
     const guards = authTypes.map((type) => this.authTypeGuardMap[type]).flat();
     let error = new UnauthorizedException();
+    /* For each guard we call its "canActivate" method
+      In case of type 0 => AuthType.Bearer we call our access-token guard
+      In case of type 1 => AuthType.None we call canActivate which returns true
+      Else we throw an error
+    */
     for (const instance of guards) {
       const canActivate = await Promise.resolve(
         instance.canActivate(context)
