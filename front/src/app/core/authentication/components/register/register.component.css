@@ -24,7 +24,6 @@
 
 .register-form {
   width: 68.125rem;
-  height: 34.5625rem;
   height: auto;
   border-radius: 10px;
   border: 0.5px solid #878787;
@@ -61,13 +60,7 @@
 .input-filed {
   width: 45%;
   height: 92px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 9px; */
   flex-shrink: 0;
-  /* margin-bottom: 38px; */
 }
 
 .input-filed:last-child {
@@ -180,7 +173,6 @@ label {
   line-height: normal;
 }
 
-/* left-side */
 .left-side {
   width: 43%;
   height: 68%;
@@ -240,4 +232,111 @@ label {
   flex-direction: row;
   align-items: flex-start;
   gap: 50px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: auto;
+  }
+  .register-form {
+    width: 90%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .form {
+    margin-bottom: 0;
+  }
+  .input-filed {
+    width: 100%;
+  }
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .input-text {
+    width: 100%;
+  }
+  .btn {
+    width: 90%;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+  .sub-title {
+    font-size: 8px;
+  }
+  .paragraph {
+    margin-top: 20px;
+  }
+  .par1 {
+    font-size: 14px;
+  }
+  .par2 {
+    font-size: 14px;
+  }
+  .row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    height: auto;
+  }
+  .register-form {
+    width: 90%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .form {
+    margin-bottom: 0;
+  }
+  .input-filed {
+    width: 100%;
+  }
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .input-text {
+    width: 100%;
+  }
+  .btn {
+    width: 90%;
+  }
+  .row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (max-width: 1200px) {
+  .container {
+    height: auto;
+  }
+  .register-form {
+    width: 90%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .form {
+    margin-bottom: 0;
+  }
+  .input-filed {
+    width: 100%;
+  }
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .input-text {
+    width: 100%;
+  }
+  .btn {
+    width: 90%;
+  }
+  .row {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
