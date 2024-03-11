@@ -23,7 +23,8 @@
 }
 
 .register-form {
-  width: 35%;
+  width: 68.125rem;
+  height: 34.5625rem;
   height: auto;
   border-radius: 10px;
   border: 0.5px solid #878787;
@@ -32,8 +33,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
-  margin-bottom: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .logo {
@@ -49,17 +50,24 @@
   height: auto;
   margin-bottom: 50px;
 }
-
-.input-filed {
-  width: 90%;
-  height: 92px;
+.form-row {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 20px;
+}
+.input-filed {
+  width: 45%;
+  height: 92px;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 9px;
+  gap: 9px; */
   flex-shrink: 0;
-  margin-bottom: 38px;
+  /* margin-bottom: 38px; */
 }
 
 .input-filed:last-child {

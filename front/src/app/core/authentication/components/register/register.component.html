@@ -33,73 +33,80 @@
       />
     </div>
     <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <div class="input-filed">
-        <label for="email">E-mail :</label>
-        <input
-          class="input-text"
-          type="text"
-          placeholder="Enter your email"
-          id="email"
-          formControlName="email"
-          email
-          required
-        />
+      <div class="form-row">
+        <div class="input-filed">
+          <label for="email">E-mail :</label>
+          <input
+            class="input-text"
+            type="text"
+            placeholder="Enter your email"
+            id="email"
+            formControlName="email"
+            email
+            required
+          />
+        </div>
+        <div class="input-filed">
+          <label for="firstName">First Name :</label>
+          <input
+            class="input-text"
+            type="text"
+            placeholder="Enter your first Name"
+            id="firstName"
+            formControlName="firstName"
+            required
+          />
+        </div>
       </div>
-      <div class="input-filed">
-        <label for="firstName">First Name :</label>
-        <input
-          class="input-text"
-          type="text"
-          placeholder="Enter your first Name"
-          id="firstName"
-          formControlName="firstName"
-          required
-        />
+      <div class="form-row">
+        <div class="input-filed">
+          <label for="lastName">Last Name :</label>
+          <input
+            class="input-text"
+            type="text"
+            placeholder="Enter your lastName"
+            id="lastName"
+            formControlName="lastName"
+            required
+          />
+        </div>
+        <div class="input-filed">
+          <label for="phone">Phone :</label>
+          <input
+            class="input-text"
+            type="text"
+            placeholder="Enter your phone number"
+            id="phone"
+            formControlName="phone"
+            required
+          />
+        </div>
       </div>
-      <div class="input-filed">
-        <label for="lastName">Last Name :</label>
-        <input
-          class="input-text"
-          type="text"
-          placeholder="Enter your lastName"
-          id="lastName"
-          formControlName="lastName"
-          required
-        />
+      <div class="form-row">
+        <div class="input-filed">
+          <label for="username">Password :</label>
+          <input
+            class="input-text"
+            type="password"
+            placeholder="Enter your password"
+            id="username"
+            formControlName="password"
+            required
+          />
+        </div>
+        <div class="input-filed">
+          <label for="confirmPassword">Repeate Password :</label>
+          <input
+            class="input-text"
+            type="password"
+            placeholder="Repeate your password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            required
+          />
+        </div>
       </div>
-      <div class="input-filed">
-        <label for="phone">Phone :</label>
-        <input
-          class="input-text"
-          type="text"
-          placeholder="Enter your phone number"
-          id="phone"
-          formControlName="phone"
-          required
-        />
-      </div>
-      <div class="input-filed">
-        <label for="username">Password :</label>
-        <input
-          class="input-text"
-          type="password"
-          placeholder="Enter your password"
-          id="username"
-          formControlName="password"
-          required
-        />
-      </div>
-      <div class="input-filed">
-        <label for="confirmPassword">Repeate Password :</label>
-        <input
-          class="input-text"
-          type="password"
-          placeholder="Repeate your password"
-          id="confirmPassword"
-          formControlName="confirmPassword"
-          required
-        />
-      </div>
+
       <div class="btn">
         <button class="register-btn" type="submit">Sign Up</button>
       </div>

@@ -7,44 +7,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
-  signupForm!: FormGroup;
+  public signupForm: FormGroup;
+
   ngOnInit() {
     this.signupForm = new FormGroup({
-      email: new FormControl(null),
-      firstName: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(3),
-      ]),
-      lastName: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(3),
-      ]),
-      phone: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(8),
-      ]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
-      confirmPassword: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(8),
-        // this.confirmPassword,
-      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
     });
   }
 
   onSubmit() {
-    console.log(this.signupForm);
-  }
-
-  //confirm password validation
-  confirmPassword(control: FormControl): { [s: string]: boolean } {
-    if (control.value !== this.signupForm.controls['password'].value) {
-      return { confirmPassword: true };
-    }
-    return { confirmPassword: false };
+    console.log(this.signupForm.value);
   }
 }
