@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="left-side">
+    <div class="title">
+      <h1>Sign In to</h1>
+    </div>
+    <div class="sub-title">
+      <h1>Frank Me Now!</h1>
+    </div>
+    <div class="row">
+      <div class="paragraph">
+        <p class="par1">Don’t have ab Account</p>
+        <p class="par2">
+          You can <a routerLink="/register">Register here !</a>
+        </p>
+      </div>
+      <div class="image">
+        <img
+          class="image"
+          src="assets/images/folder.png"
+          alt=""
+          width="71%"
+          height="94%"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="login-form">
+    <div class="logo">
+      <img
+        class="image"
+        src="assets/images/logo.png"
+        alt=""
+        width="64px"
+        height="73px"
+      />
+    </div>
+    <form class="form">
+      <div class="input-filed">
+        <label for="email">E-mail :</label>
+        <input
+          class="input-text"
+          type="text"
+          placeholder="Enter your email"
+          id="email"
+        />
+      </div>
+      <div class="input-filed last-child">
+        <label for="password">Password :</label>
+        <input
+          class="input-text"
+          type="password"
+          placeholder="Enter your password"
+          id="password"
+        />
+      </div>
+      <div class="forgot-password">
+        <a routerLink="/forgot-password">Forgot Password ?</a>
+      </div>
+      <div class="btn">
+        <button class="login-btn">Login</button>
+      </div>
+      <div class="btn">
+        <button class="google-btn">
+          <i class="fab fa-google fa-1.75x"></i>Continue with Google
+        </button>
+      </div>
+    </form>
+    <!-- Don’t have an Account ? Register -->
+    <div class="register-now">
+      <p>Don’t have an Account ? <a routerLink="/register">Register</a></p>
+    </div>
+  </div>
+</div>

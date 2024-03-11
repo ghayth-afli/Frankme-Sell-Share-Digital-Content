@@ -1,0 +1,117 @@
+<div class="container">
+  <!-- <div class="left-side">
+    <div class="title">
+      <h1>Sign Up to</h1>
+    </div>
+    <div class="sub-title">
+      <h1>Frank Me Now!</h1>
+    </div>
+    <div class="row">
+      <div class="paragraph">
+        <p class="par1">You have an Account</p>
+        <p class="par2">You can <a href="">Login !</a></p>
+      </div>
+      <div class="image">
+        <img
+          class="image"
+          src="assets/images/folder.png"
+          alt=""
+          width="74%"
+          height="94%"
+        />
+      </div>
+    </div>
+  </div> -->
+  <div class="register-form">
+    <div class="logo">
+      <img
+        class="image"
+        src="assets/images/logo.png"
+        alt=""
+        width="64px"
+        height="73px"
+      />
+    </div>
+    <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="input-filed">
+        <label for="email">E-mail :</label>
+        <input
+          class="input-text"
+          type="text"
+          placeholder="Enter your email"
+          id="email"
+          formControlName="email"
+          email
+          required
+        />
+      </div>
+      <div class="input-filed">
+        <label for="firstName">First Name :</label>
+        <input
+          class="input-text"
+          type="text"
+          placeholder="Enter your first Name"
+          id="firstName"
+          formControlName="firstName"
+          required
+        />
+      </div>
+      <div class="input-filed">
+        <label for="lastName">Last Name :</label>
+        <input
+          class="input-text"
+          type="text"
+          placeholder="Enter your lastName"
+          id="lastName"
+          formControlName="lastName"
+          required
+        />
+      </div>
+      <div class="input-filed">
+        <label for="phone">Phone :</label>
+        <input
+          class="input-text"
+          type="text"
+          placeholder="Enter your phone number"
+          id="phone"
+          formControlName="phone"
+          required
+        />
+      </div>
+      <div class="input-filed">
+        <label for="username">Password :</label>
+        <input
+          class="input-text"
+          type="password"
+          placeholder="Enter your password"
+          id="username"
+          formControlName="password"
+          required
+        />
+      </div>
+      <div class="input-filed">
+        <label for="confirmPassword">Repeate Password :</label>
+        <input
+          class="input-text"
+          type="password"
+          placeholder="Repeate your password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          required
+        />
+      </div>
+      <div class="btn">
+        <button class="register-btn" type="submit">Sign Up</button>
+      </div>
+      <div class="btn">
+        <button class="google-btn">
+          <i class="fab fa-google fa-1.75x"></i>Continue with Google
+        </button>
+      </div>
+    </form>
+    <!-- Don’t have an Account ? Register -->
+    <div class="register-now">
+      <p>You have an Account ? <a routerLink="/login">Login</a></p>
+    </div>
+  </div>
+</div>
