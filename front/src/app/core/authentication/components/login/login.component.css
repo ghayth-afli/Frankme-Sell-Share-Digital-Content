@@ -15,6 +15,7 @@
 }
 
 .container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,6 +179,7 @@ label {
   font-weight: 300;
   line-height: normal;
   margin-bottom: 39px;
+  cursor: pointer;
 }
 
 .register-now a {
@@ -249,4 +251,8 @@ label {
   flex-direction: row;
   align-items: flex-start;
   gap: 50px;
+}
+
+.register-form {
+  display: none;
 }

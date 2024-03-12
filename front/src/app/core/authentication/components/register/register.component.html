@@ -1,27 +1,4 @@
-<div class="container">
-  <!-- <div class="left-side">
-    <div class="title">
-      <h1>Sign Up to</h1>
-    </div>
-    <div class="sub-title">
-      <h1>Frank Me Now!</h1>
-    </div>
-    <div class="row">
-      <div class="paragraph">
-        <p class="par1">You have an Account</p>
-        <p class="par2">You can <a href="">Login !</a></p>
-      </div>
-      <div class="image">
-        <img
-          class="image"
-          src="assets/images/folder.png"
-          alt=""
-          width="74%"
-          height="94%"
-        />
-      </div>
-    </div>
-  </div> -->
+<div class="container register" *ngIf="acitivateRegister">
   <div class="register-form">
     <div class="logo">
       <img
@@ -35,6 +12,17 @@
     <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <div class="form-row">
         <div class="input-filed">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            (click)="hideForm()"
+          >
+            <path
+              fill="#0077b8"
+              d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"
+            />
+          </svg>
+
           <label for="email">E-mail :</label>
           <input
             class="input-text"
@@ -45,6 +33,7 @@
             email
             required
           />
+          <span class="error">Please enter a valid email</span>
         </div>
         <div class="input-filed">
           <label for="firstName">First Name :</label>
@@ -117,8 +106,8 @@
       </div>
     </form>
     <!-- Don’t have an Account ? Register -->
-    <div class="register-now">
+    <!-- <div class="register-now">
       <p>You have an Account ? <a routerLink="/login">Login</a></p>
-    </div>
+    </div> -->
   </div>
 </div>

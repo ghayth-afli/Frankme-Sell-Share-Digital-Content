@@ -67,7 +67,11 @@
     </form>
     <!-- Don’t have an Account ? Register -->
     <div class="register-now">
-      <p>Don’t have an Account ? <a routerLink="/register">Register</a></p>
+      <p>Don’t have an Account ? <a (click)="registerForm()">Register</a></p>
     </div>
   </div>
+  <app-register
+    [acitivateRegister]="acitivateRegister"
+    (hideRegister)="onHideRegister($event)"
+  ></app-register>
 </div>

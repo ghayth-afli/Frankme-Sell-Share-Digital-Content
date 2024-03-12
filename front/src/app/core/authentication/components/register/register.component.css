@@ -14,15 +14,24 @@
   margin-right: 10px;
 }
 
+svg {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 1%;
+  top: 2%;
+  cursor: pointer;
+}
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #fff;
+  /* background: #fff; */
 }
 
 .register-form {
+  position: relative;
   width: 68.125rem;
   height: auto;
   border-radius: 10px;
@@ -59,8 +68,18 @@
 }
 .input-filed {
   width: 45%;
-  height: 92px;
+  height: auto;
   flex-shrink: 0;
+}
+
+.error {
+  color: red;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-top: 5px;
 }
 
 .input-filed:last-child {
@@ -233,6 +252,15 @@ label {
   align-items: flex-start;
   gap: 50px;
 }
+
+.register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Media queries */
 
 @media (max-width: 768px) {
   .container {

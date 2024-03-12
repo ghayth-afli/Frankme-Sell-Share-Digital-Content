@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
+  @Input() acitivateRegister: boolean;
+  @Output() hideRegister = new EventEmitter<{ r: boolean }>();
+
   public signupForm: FormGroup;
 
   ngOnInit() {
@@ -22,5 +25,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.signupForm.value);
+  }
+
+  hideForm() {
+    this.hideRegister.emit({ r: true });
   }
 }
