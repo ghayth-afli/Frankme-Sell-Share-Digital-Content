@@ -13,8 +13,7 @@
   -webkit-text-fill-color: transparent;
   margin-right: 10px;
 }
-
-svg {
+.exit-btn {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -71,16 +70,6 @@ svg {
   width: 45%;
   height: auto;
   flex-shrink: 0;
-}
-
-.error {
-  color: red;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  margin-top: 5px;
 }
 
 .input-filed:last-child {
@@ -158,6 +147,10 @@ label {
 }
 
 .google-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   border-radius: 6px;
   border: 1px solid var(--primary-color);
   background: #fff;
@@ -201,50 +194,12 @@ label {
 .title {
   color: var(--secondary-color);
   font-family: Poppins;
-  font-size: 30px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-}
-
-.sub-title {
-  color: #0096c7;
-  font-family: Poppins;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 100;
-  line-height: normal;
-}
-.paragraph {
   margin-top: 53px;
-}
-
-.par1 {
-  color: #000;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.par2 {
-  color: #0096c7;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.par2 a {
-  text-decoration: none;
-  color: #0096c7;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  margin-bottom: 10px;
 }
 
 .row {
@@ -259,6 +214,20 @@ label {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+/* form Cotrol errors */
+.error {
+  color: red;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-top: 5px;
+}
+
+.input-text.ng-invalid.ng-touched {
+  border: 1px solid red;
 }
 
 /* Media queries */
