@@ -12,6 +12,7 @@ import {
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
+  // Input and output properties
   @Input() acitivateRegister: boolean;
   @Output() hideRegister = new EventEmitter<{ r: boolean }>();
 

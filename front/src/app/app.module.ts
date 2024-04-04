@@ -3,21 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './core/authentication/components/register/register.component';
-import { LoginComponent } from './core/authentication/components/login/login.component';
-import { ForgotPasswordComponent } from './core/authentication/components/forgot-password/forgot-password.component';
-import { NewPasswordComponent } from './core/authentication/components/new-password/new-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
-    NewPasswordComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, SharedModule, CoreModule, AuthModule],
   providers: [],
   bootstrap: [AppComponent],
 })
