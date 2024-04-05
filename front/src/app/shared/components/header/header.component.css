@@ -1,0 +1,107 @@
+.header {
+  height: 6.375rem;
+  background-color: #f6f9fc;
+  border-bottom: 1px solid #999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-fluid {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-col {
+  display: flex;
+  align-items: center;
+  gap: 0.56rem;
+  margin-left: 3.44rem;
+}
+
+.left-col h1 {
+  color: #1f2c73;
+  font-family: Poppins;
+  font-size: 1.55rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.right-col {
+  display: flex;
+  align-items: center;
+  gap: 1.13rem;
+  margin-right: 3.44rem;
+}
+
+.income {
+  width: 15.125rem;
+  height: 2.6875rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.el-income {
+  display: flex;
+  width: 7.5625rem;
+  height: 2.6875rem;
+  padding: 0.5625rem 0.9375rem 0.625rem 1.375rem;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.6875rem;
+  flex-shrink: 0;
+}
+
+.el-income.left {
+  border: 1px solid #1f2c73;
+  border-radius: 1.875rem 0rem 0rem 1.875rem;
+  background: rgba(6, 193, 254, 0.2);
+}
+
+.el-income.right {
+  border-radius: 0rem 1.875rem 1.875rem 0rem;
+  border-top: 1px solid #1f2c73;
+  border-right: 1px solid #1f2c73;
+  border-bottom: 1px solid #1f2c73;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.income-value {
+  color: #1f2c73;
+  font-family: Poppins;
+  font-size: 0.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.icome-total {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notification button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.el-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.el-profil img {
+  border-radius: 8px;
+}
+
+.profil button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
