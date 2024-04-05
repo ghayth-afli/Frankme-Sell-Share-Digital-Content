@@ -1,0 +1,38 @@
+.side-bar {
+  width: 4.688rem;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: #0077b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  margin-top: 2rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.el-menu {
+  margin-top: 2.81rem;
+}
+
+.active {
+  background-color: #ffffff;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
