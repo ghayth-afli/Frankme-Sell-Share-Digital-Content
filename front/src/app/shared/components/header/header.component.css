@@ -1,7 +1,7 @@
 .header {
-  height: 6.375rem;
+  height: 5.375rem;
   background-color: #f6f9fc;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #9999992f;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,11 +35,12 @@
   align-items: center;
   gap: 1.13rem;
   margin-right: 3.44rem;
+  position: relative;
 }
 
 .income {
-  width: 15.125rem;
-  height: 2.6875rem;
+  width: auto;
+  height: auto;
   flex-shrink: 0;
   display: flex;
   flex-direction: row;
@@ -47,8 +48,8 @@
 
 .el-income {
   display: flex;
-  width: 7.5625rem;
-  height: 2.6875rem;
+  width: 111px;
+  height: 40px;
   padding: 0.5625rem 0.9375rem 0.625rem 1.375rem;
   justify-content: flex-end;
   align-items: center;
@@ -59,7 +60,22 @@
 .el-income.left {
   border: 1px solid #1f2c73;
   border-radius: 1.875rem 0rem 0rem 1.875rem;
-  background: rgba(6, 193, 254, 0.2);
+  background-color: rgba(6, 192, 254, 0.09);
+}
+
+.el-income.left:hover {
+  border: 1px solid #1f2c73;
+  border-radius: 1.875rem 0rem 0rem 1.875rem;
+  background: #0077b8;
+  transition: 0.5s linear;
+}
+
+.el-income.left:hover .income-value {
+  color: #ffffff;
+}
+
+.el-income.left:hover svg {
+  color: #ffffff;
 }
 
 .el-income.right {
@@ -73,7 +89,7 @@
 .income-value {
   color: #1f2c73;
   font-family: "Poppins";
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -81,6 +97,8 @@
 
 .icome-total {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
 }
@@ -89,6 +107,31 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.notification {
+  position: relative;
+}
+
+.bull {
+  background-color: #f45b5b;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  position: absolute;
+  color: #f6f9fc;
+  font-family: Roboto;
+  font-size: 0.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -0.2rem;
+  left: -0.1rem;
+  border: 2px solid #f6f9fc;
+  flex-shrink: 0;
 }
 
 .el-dropdown {
@@ -104,4 +147,57 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+/* dropdown */
+
+.dropdown {
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0.625rem;
+  top: 3rem;
+  right: 0;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  transition: 0s;
+  opacity: 0;
+}
+
+.drop {
+  transform: translateY(5%);
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #0000000f;
+}
+
+.dropdown ul li:last-child {
+  border-bottom: none;
+}
+
+.dropdown ul li:hover {
+  background-color: #f6f9fc;
+}
+
+.dropdown ul li a {
+  color: #1f2c73;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
 }
