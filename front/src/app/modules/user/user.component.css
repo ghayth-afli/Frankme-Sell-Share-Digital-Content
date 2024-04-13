@@ -1,22 +1,33 @@
 .container {
+  height: 100vh;
   background-color: #f6f9fc;
-  display: grid;
-  grid-template-columns: 4rem 1fr;
-  grid-template-rows: 5.375rem 1fr;
-  grid-template-areas:
-    "sidebar header"
-    "sidebar body";
 }
 
 app-header {
   grid-area: header;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - 4rem);
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 app-side-bar {
   grid-area: sidebar;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
 }
 
 main {
   grid-area: body;
-  margin: 1.91rem 3.44rem;
+  margin-left: 7.44rem;
+  margin-right: 3.44rem;
+  padding-top: 7.285rem;
 }
