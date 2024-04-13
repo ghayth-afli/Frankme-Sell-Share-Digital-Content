@@ -1,13 +1,22 @@
 .container {
-  display: flex;
-  flex-direction: row;
   background-color: #f6f9fc;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: 5.375rem 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar body";
 }
 
 app-header {
-  width: 100%;
+  grid-area: header;
 }
 
 app-side-bar {
-  height: 100%;
+  grid-area: sidebar;
+}
+
+main {
+  grid-area: body;
+  margin: 1.91rem 3.44rem;
 }

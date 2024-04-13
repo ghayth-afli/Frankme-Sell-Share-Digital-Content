@@ -39,8 +39,6 @@
 }
 
 .income {
-  width: auto;
-  height: auto;
   flex-shrink: 0;
   display: flex;
   flex-direction: row;
@@ -48,7 +46,7 @@
 
 .el-income {
   display: flex;
-  width: 111px;
+  width: calc(100% / 2);
   height: 40px;
   padding: 0.5625rem 0.9375rem 0.625rem 1.375rem;
   justify-content: flex-end;
@@ -58,7 +56,7 @@
 }
 
 .el-income.left {
-  border: 1px solid #1f2c73;
+  border: 1px solid #1f2c7369;
   border-radius: 1.875rem 0rem 0rem 1.875rem;
   background-color: rgba(6, 192, 254, 0.09);
 }
@@ -80,9 +78,9 @@
 
 .el-income.right {
   border-radius: 0rem 1.875rem 1.875rem 0rem;
-  border-top: 1px solid #1f2c73;
-  border-right: 1px solid #1f2c73;
-  border-bottom: 1px solid #1f2c73;
+  border-top: 1px solid #1f2c7369;
+  border-right: 1px solid #1f2c7369;
+  border-bottom: 1px solid #1f2c7369;
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -115,7 +113,7 @@
 
 .bull {
   background-color: #f45b5b;
-  width: 0.95rem;
+  width: calc(100% / 1.5);
   height: 0.95rem;
   border-radius: 50%;
   position: absolute;
