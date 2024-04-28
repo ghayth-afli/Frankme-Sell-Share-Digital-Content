@@ -14,6 +14,9 @@ export class User {
   @Column({ unique: true })
   email: string;
 
+  @Column({ default: 'seller' })
+  role: string;
+
   @Column()
   hashedPassword: string;
 
@@ -25,4 +28,9 @@ export class User {
 
   @Column({ nullable: true })
   tfaSecret: string;
+
+  static removeHashedPassword(userObj: User) {
+    const { hashedPassword, ...userWithoutPassword } = userObj;
+    return userWithoutPassword;
+  }
 }
