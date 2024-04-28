@@ -45,6 +45,14 @@ Content-Type: application/json
 }
 
 ###get user
-GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwiaWF0IjoxNzA5NzUyOTkwLCJleHAiOjE3MDk4MzkzOTAsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.psdD1gImX2AdrpbnUZv3hanZ5rRLAUkqrWxz38RwQyU
+GET http://localhost:3000/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwiaWF0IjoxNzE0Mjk5MTI4LCJleHAiOjE3MTQzODU1MjgsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.P0_fGQtV0SKmEZt67pZxL35-RxJoN3HaKycKKV65TNs
 
+### update user
+PATCH http://localhost:3000/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwiaWF0IjoxNzE0Mjk5MTI4LCJleHAiOjE3MTQzODU1MjgsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.P0_fGQtV0SKmEZt67pZxL35-RxJoN3HaKycKKV65TNs
+
+{
+    "firstName": "bla",
+    "email": "bla@gmail.com"
+}
