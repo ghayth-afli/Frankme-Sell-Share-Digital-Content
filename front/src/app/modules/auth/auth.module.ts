@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -18,10 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     NewPasswordComponent,
     RegisterComponent,
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
 })
-export class AuthModule { }
+export class AuthModule {}

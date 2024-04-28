@@ -5,6 +5,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,7 @@ export class RegisterComponent implements OnInit {
 
   public signupForm: FormGroup;
 
+  constructor(private authService: AuthService) {}
   // Initialize the form
   ngOnInit() {
     this.signupForm = new FormGroup(
@@ -63,7 +65,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signupForm);
+    const { firstName, lastName, email, password, phoneNumber } =
+      this.signupForm.value;
+    this.authService
+      .register(firstName, lastName, email, password, phoneNumber)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.hideForm();
+        },
+        error: (error) => console.error(error),
+      });
   }
 
   // Hide the register form
