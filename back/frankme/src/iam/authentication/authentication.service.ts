@@ -35,6 +35,7 @@ export class AuthenticationService {
       user.lastName = signUpDto.lastName;
       user.phone = signUpDto.phone;
       user.hashedPassword = await this.hashingService.hash(signUpDto.password);
+      user.profilePicture = `https://api.dicebear.com/8.x/lorelei/svg?seed=${user.firstName}`;
 
       await this.usersRepository.save(user);
     } catch (err) {
