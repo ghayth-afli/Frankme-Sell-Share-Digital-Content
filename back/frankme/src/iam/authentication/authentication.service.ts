@@ -3,18 +3,18 @@ import {
   Inject,
   Injectable,
   UnauthorizedException,
-} from "@nestjs/common";
-import { Repository } from "typeorm";
-import { User } from "../../users/entities/user.entity";
-import { InjectRepository } from "@nestjs/typeorm";
-import { HashingService } from "../hashing/hashing.service";
-import { SignUpDto } from "./dto/sign-up.dto";
-import { SignInDto } from "./dto/sign-in.dto";
-import { ConfigType } from "@nestjs/config";
-import jwtConfig from "../config/jwt.config";
-import { JwtService } from "@nestjs/jwt";
-import { RefreshTokenDto } from "./dto/refresh-token.dto";
-import { OtpAuthenticationService } from "./otp-authentication.service";
+} from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { HashingService } from '../hashing/hashing.service';
+import { SignUpDto } from './dto/sign-up.dto';
+import { SignInDto } from './dto/sign-in.dto';
+import { ConfigType } from '@nestjs/config';
+import jwtConfig from '../config/jwt.config';
+import { JwtService } from '@nestjs/jwt';
+import { RefreshTokenDto } from './dto/refresh-token.dto';
+import { OtpAuthenticationService } from './otp-authentication.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -24,7 +24,7 @@ export class AuthenticationService {
     private readonly jwtService: JwtService,
     @Inject(jwtConfig.KEY)
     private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
-    private readonly otpAuthService: OtpAuthenticationService
+    private readonly otpAuthService: OtpAuthenticationService,
   ) {}
 
   async signUp(signUpDto: SignUpDto) {
@@ -39,9 +39,9 @@ export class AuthenticationService {
       await this.usersRepository.save(user);
     } catch (err) {
       console.error(`Error in signUp authentication service : ${err}`);
-      const pgUniqueViolationErrorCode = "23505";
+      const pgUniqueViolationErrorCode = '23505';
       if (err.code === pgUniqueViolationErrorCode) {
-        throw new ConflictException("User exits with the given email");
+        throw new ConflictException('User exits with the given email');
       }
       throw err;
     }
@@ -53,22 +53,22 @@ export class AuthenticationService {
         email: signInDto.email,
       });
       if (!user) {
-        throw new UnauthorizedException("User does not exist");
+        throw new UnauthorizedException('User does not exist');
       }
       const isEqual = this.hashingService.compare(
         signInDto.password,
-        user.hashedPassword
+        user.hashedPassword,
       );
       if (!isEqual) {
-        throw new UnauthorizedException("Password does not match");
+        throw new UnauthorizedException('Password does not match');
       }
       if (user.isTfaEnabled) {
         const isValid = this.otpAuthService.verifyCode(
           signInDto.tfaCode,
-          user.tfaSecret
+          user.tfaSecret,
         );
         if (!isValid) {
-          throw new UnauthorizedException("Invalid 2FA code");
+          throw new UnauthorizedException('Invalid 2FA code');
         }
       }
       return await this.generateTokens(user);
@@ -95,7 +95,7 @@ export class AuthenticationService {
           secret: this.jwtConfiguration.secret,
           audience: this.jwtConfiguration.audience,
           issuer: this.jwtConfiguration.issuer,
-        }
+        },
       );
 
       const user = await this.usersRepository.findOneByOrFail({ id: sub });
@@ -116,7 +116,7 @@ export class AuthenticationService {
         issuer: this.jwtConfiguration.issuer,
         secret: this.jwtConfiguration.secret,
         expiresIn,
-      }
+      },
     );
   }
 }

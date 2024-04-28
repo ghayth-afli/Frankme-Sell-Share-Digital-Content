@@ -3,7 +3,7 @@ import {
   IsNumberString,
   IsOptional,
   MinLength,
-} from "class-validator";
+} from 'class-validator';
 
 export class SignInDto {
   @IsEmail()

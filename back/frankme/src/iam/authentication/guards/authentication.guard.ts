@@ -3,11 +3,11 @@ import {
   ExecutionContext,
   Injectable,
   UnauthorizedException,
-} from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
-import { Observable } from "rxjs";
-import { AuthType } from "../enums/auth-type.enum";
-import { AccessTokenGuard } from "./access-token.guard";
+} from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { Observable } from 'rxjs';
+import { AuthType } from '../enums/auth-type.enum';
+import { AccessTokenGuard } from './access-token.guard';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
@@ -21,10 +21,10 @@ export class AuthenticationGuard implements CanActivate {
   };
   constructor(
     private reflector: Reflector,
-    private accessTokenGuard: AccessTokenGuard
+    private accessTokenGuard: AccessTokenGuard,
   ) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const authTypes = this.reflector.getAllAndOverride<AuthType[]>("authType", [
+    const authTypes = this.reflector.getAllAndOverride<AuthType[]>('authType', [
       context.getHandler(),
       context.getClass(),
     ]) ?? [AuthenticationGuard.defaultAuthType];
@@ -38,7 +38,7 @@ export class AuthenticationGuard implements CanActivate {
     */
     for (const instance of guards) {
       const canActivate = await Promise.resolve(
-        instance.canActivate(context)
+        instance.canActivate(context),
       ).catch((err) => (error = err));
 
       if (canActivate) {
