@@ -7,7 +7,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AuthService } from './modules/auth/services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { TokenStorageService } from './core/services/TokenStorage.service';
+import { AuthenticatedUserService } from './core/services/authenticatedUser.service';
+import { UserService } from './modules/seller/services/user.service';
+import { AuthGuard } from './core/guards/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +24,18 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    TokenStorageService,
+    AuthenticatedUserService,
+    UserService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true, // This is required to add multiple interceptors
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -34,7 +34,7 @@
         height="73px"
       />
     </div>
-    <form class="form">
+    <form class="form" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
       <div class="input-filed">
         <label for="email">E-mail :</label>
         <input
@@ -42,6 +42,9 @@
           type="text"
           placeholder="Enter your email"
           id="email"
+          formControlName="email"
+          email
+          required
         />
       </div>
       <div class="input-filed last-child">
@@ -51,6 +54,8 @@
           type="password"
           placeholder="Enter your password"
           id="password"
+          formControlName="password"
+          required
         />
       </div>
       <div class="forgot-password">
