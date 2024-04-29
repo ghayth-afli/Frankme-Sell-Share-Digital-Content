@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Link } from 'src/links/entities/link.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -38,7 +39,11 @@ export class User {
   @Column({ default: '0x0000000000000000000000000000000000000000' })
   walletAddress: string;
 
+  @OneToMany(() => Link, (link) => link.user)
+  links: Link[];
+
   static removeHashedPassword(userObj: User) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { hashedPassword, ...userWithoutPassword } = userObj;
     return userWithoutPassword;
   }
