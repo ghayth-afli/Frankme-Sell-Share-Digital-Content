@@ -55,6 +55,10 @@ export class AuthService {
 
   logout(): void {
     this.tokenStorageService.signOut();
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
+  }
+
+  isLoggedIn(): boolean {
+    return this.tokenStorageService.getToken() ? true : false;
   }
 }

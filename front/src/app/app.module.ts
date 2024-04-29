@@ -10,8 +10,7 @@ import { AuthService } from './modules/auth/services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { TokenStorageService } from './core/services/TokenStorage.service';
-import { AuthenticatedUserService } from './core/services/authenticatedUser.service';
-import { UserService } from './modules/seller/services/user.service';
+import { UserService } from './core/services/user.service';
 import { AuthGuard } from './core/guards/auth.guard';
 
 @NgModule({
@@ -27,7 +26,6 @@ import { AuthGuard } from './core/guards/auth.guard';
   providers: [
     AuthService,
     TokenStorageService,
-    AuthenticatedUserService,
     UserService,
     AuthGuard,
     {
