@@ -1,40 +1,33 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  Subscription,
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  fromEvent,
-  map,
-} from 'rxjs';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-headr-main',
   templateUrl: './headr-main.component.html',
   styleUrl: './headr-main.component.css',
 })
-export class HeadrMainComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    this.scrollSubscription = fromEvent(window, 'scroll')
-      .pipe(
-        filter(() => window.scrollY > 0),
-        map(() => window.scrollY),
-        debounceTime(100),
-        distinctUntilChanged()
-      )
-      .subscribe((scrollPosition: number) => {
-        this.isNavbarFixed = true;
-        if (scrollPosition > 100) {
-          this.isNavbarHidden = true;
-        } else {
-          this.isNavbarHidden = false;
-        }
-      });
+export class HeadrMainComponent {
+  @ViewChild('navbar') navbar: ElementRef;
+
+  lastScrollPosition: number;
+
+  constructor() {}
+
+  ngAfterViewInit() {
+    window.addEventListener('scroll', () => {
+      const currentScrollPosition = window.pageYOffset;
+
+      if (
+        currentScrollPosition > this.lastScrollPosition &&
+        currentScrollPosition > 50
+      ) {
+        // hide the navbar
+        this.navbar.nativeElement.classList.add('navbar-hide');
+      } else {
+        // show the navbar
+        this.navbar.nativeElement.classList.remove('navbar-hide');
+      }
+
+      this.lastScrollPosition = currentScrollPosition;
+    });
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  isNavbarFixed = false;
-  isNavbarHidden = false;
-  private scrollSubscription: Subscription;
 }

@@ -30,6 +30,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'about',
+    loadChildren: () =>
+      import('./modules/about/about.module').then((m) => m.AboutModule),
+  },
+  {
+    path: 'service',
+    loadChildren: () =>
+      import('./modules/service/service.module').then((m) => m.ServiceModule),
+  },
+  {
+    path: 'pricing',
+    loadChildren: () =>
+      import('./modules/pricing/pricing.module').then((m) => m.PricingModule),
+  },
   { path: '**', redirectTo: '' },
 ];
 
