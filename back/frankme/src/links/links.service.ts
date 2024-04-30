@@ -4,7 +4,6 @@ import { UpdateLinkDto } from './dto/update-link.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Link } from './entities/link.entity';
 import { Repository } from 'typeorm';
-import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
 import { ActiveUserData } from 'src/iam/interfaces/active-user-data.interface';
 
@@ -44,6 +43,11 @@ export class LinksService {
     const links = await this.linksRepository.find({
       relations: { user: true },
       where: { user: currentUser },
+      order: {
+        uploadedDate: {
+          direction: 'DESC',
+        },
+      },
     });
     if (!links) {
       throw new NotFoundException('No links found');
@@ -84,5 +88,22 @@ export class LinksService {
     } catch (error) {
       throw new NotFoundException(`Link with id ${id} not found`);
     }
+  }
+
+  async summary(user: ActiveUserData) {
+    const links = await this.findAll(user);
+
+    const result = {
+      totalUploads: links.length,
+      activeLinks: 0,
+      totalClicks: 0,
+      totalDownloads: 0,
+    };
+    links.forEach((link) => {
+      result.activeLinks++ ? link.isActive : 0;
+      result.totalClicks = link.numberOfCLicks;
+      result.totalDownloads = link.numberOfDownload;
+    });
+    return result;
   }
 }

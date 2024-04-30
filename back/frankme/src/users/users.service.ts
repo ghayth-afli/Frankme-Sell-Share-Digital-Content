@@ -15,8 +15,9 @@ export class UsersService {
     return 'This action adds a new user';
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    const users = await this.userRepository.find();
+    return users;
   }
 
   async findOne(id: number) {
@@ -40,7 +41,13 @@ export class UsersService {
     return user;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    try {
+      const user = await this.findOne(id);
+      await this.userRepository.delete({ id });
+      return `User with id ${id} deleted`;
+    } catch (error) {
+      throw new NotFoundException(`User with id ${id} not found`);
+    }
   }
 }

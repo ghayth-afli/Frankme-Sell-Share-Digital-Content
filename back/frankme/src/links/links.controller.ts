@@ -31,6 +31,11 @@ export class LinksController {
     return this.linksService.create(createLinkDto, user);
   }
 
+  @Get('summary')
+  summary(@ActiveUser() user: ActiveUserData) {
+    return this.linksService.summary(user);
+  }
+
   @Get()
   findAll(@ActiveUser() user: ActiveUserData) {
     return this.linksService.findAll(user);

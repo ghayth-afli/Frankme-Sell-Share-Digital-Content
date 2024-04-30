@@ -1,12 +1,13 @@
+                                      ### AUTHENTICATION APIS ###
 ###sign up
 POST http://localhost:3000/authentication/sign-up 
 Content-Type: application/json
 
-{"email": "aaaa@gmail.com",
-"password": "123456",
+{"email": "manel@manel.com",
+"password": "123456789Aze@",
 "firstName": "aaaa",
 "lastName": "aaaa",
-"phone": "1234567899"}
+"phone": "99999999"}
 
 
 ###sign in without 2fa
@@ -43,9 +44,13 @@ Content-Type: application/json
 {
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTcwOTc1OTYxNiwiZXhwIjoxNzA5OTMyNDE2LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.HKtO3av11s3gqkjxIphQRzed4VABUl9qDESdY5phQvQ"
 }
-
-###get user
+                                    ### USERS APIS ###
+###get current user
 GET http://localhost:3000/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiYWFhYUBnbWFpbC5jb20iLCJpYXQiOjE3MTQ0NjYxMDIsImV4cCI6MTcxNDU1MjUwMiwiYXVkIjoibG9jYWxob3N0OjMwMDAiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMCJ9.TqMe3dMEQib7_mU-t5xBoS_ZoFpwI6X8tzY7wsor70I
+
+###get all users
+GET http://localhost:3000/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiYWFhYUBnbWFpbC5jb20iLCJpYXQiOjE3MTQ0NjYxMDIsImV4cCI6MTcxNDU1MjUwMiwiYXVkIjoibG9jYWxob3N0OjMwMDAiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMCJ9.TqMe3dMEQib7_mU-t5xBoS_ZoFpwI6X8tzY7wsor70I
 
 ### update user
@@ -56,7 +61,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsI
     "firstName": "bla",
     "email": "bla@gmail.com"
 }
+###delete user
+DELETE http://localhost:3000/users/1
 
+                                      ### LINKS APIS ###
 ### get links
 GET http://localhost:3000/links
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiYWFhYUBnbWFpbC5jb20iLCJpYXQiOjE3MTQ0NjYxMDIsImV4cCI6MTcxNDU1MjUwMiwiYXVkIjoibG9jYWxob3N0OjMwMDAiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMCJ9.TqMe3dMEQib7_mU-t5xBoS_ZoFpwI6X8tzY7wsor70I
@@ -71,7 +79,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsI
 Content-Type: application/json
 
 {
-  "title": "my link",
+  "title": "my link2",
   "url": "https://www.facebook.com/",
   "price": 10,
   "isActive": true,
@@ -94,4 +102,8 @@ Content-Type: application/json
 
 ### delete link
 DELETE http://localhost:3000/links/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiYWFhYUBnbWFpbC5jb20iLCJpYXQiOjE3MTQ0NjYxMDIsImV4cCI6MTcxNDU1MjUwMiwiYXVkIjoibG9jYWxob3N0OjMwMDAiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMCJ9.TqMe3dMEQib7_mU-t5xBoS_ZoFpwI6X8tzY7wsor70I
+
+### summary of links by user
+GET http://localhost:3000/links/summary
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiYWFhYUBnbWFpbC5jb20iLCJpYXQiOjE3MTQ0NjYxMDIsImV4cCI6MTcxNDU1MjUwMiwiYXVkIjoibG9jYWxob3N0OjMwMDAiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMCJ9.TqMe3dMEQib7_mU-t5xBoS_ZoFpwI6X8tzY7wsor70I
