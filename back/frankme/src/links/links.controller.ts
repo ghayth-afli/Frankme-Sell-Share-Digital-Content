@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { LinksService } from './links.service';
 import { CreateLinkDto } from './dto/create-link.dto';
@@ -14,7 +15,9 @@ import { ActiveUser } from 'src/iam/authentication/decorators/active-user.decora
 import { AuthType } from 'src/iam/authentication/enums/auth-type.enum';
 import { Auth } from 'src/iam/authentication/decorators/auth.decorator';
 import { ActiveUserData } from 'src/iam/interfaces/active-user-data.interface';
+import { AccessTokenGuard } from 'src/iam/authentication/guards/access-token.guard';
 
+@UseGuards(AccessTokenGuard)
 @Auth(AuthType.Bearer)
 @Controller('links')
 export class LinksController {

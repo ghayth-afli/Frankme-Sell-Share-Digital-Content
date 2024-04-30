@@ -18,10 +18,10 @@ import { APP_GUARD } from '@nestjs/core';
   controllers: [UsersController],
   providers: [
     UsersService,
-    {
-      provide: APP_GUARD,
-      useClass: AccessTokenGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AccessTokenGuard,
+    // },
   ],
   exports: [UsersService],
 })

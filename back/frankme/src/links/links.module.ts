@@ -6,8 +6,6 @@ import { Link } from './entities/link.entity';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from 'src/iam/config/jwt.config';
-import { APP_GUARD } from '@nestjs/core';
-import { AccessTokenGuard } from 'src/iam/authentication/guards/access-token.guard';
 import { UsersService } from 'src/users/users.service';
 import { User } from 'src/users/entities/user.entity';
 
@@ -18,13 +16,6 @@ import { User } from 'src/users/entities/user.entity';
     ConfigModule.forFeature(jwtConfig),
   ],
   controllers: [LinksController],
-  providers: [
-    LinksService,
-    UsersService,
-    {
-      provide: APP_GUARD,
-      useClass: AccessTokenGuard,
-    },
-  ],
+  providers: [LinksService, UsersService],
 })
 export class LinksModule {}
