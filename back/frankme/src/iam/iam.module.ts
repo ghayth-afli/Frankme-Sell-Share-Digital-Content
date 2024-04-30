@@ -8,10 +8,10 @@ import { User } from '../users/entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from './config/jwt.config';
 import { ConfigModule } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
 import { AccessTokenGuard } from './authentication/guards/access-token.guard';
 import { AuthenticationGuard } from './authentication/guards/authentication.guard';
 import { OtpAuthenticationService } from './authentication/otp-authentication.service';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -28,10 +28,12 @@ import { OtpAuthenticationService } from './authentication/otp-authentication.se
       provide: APP_GUARD,
       useClass: AuthenticationGuard,
     },
+
     AuthenticationService,
     AccessTokenGuard,
     OtpAuthenticationService,
   ],
   controllers: [AuthenticationController],
+  exports: [AccessTokenGuard],
 })
 export class IamModule {}
