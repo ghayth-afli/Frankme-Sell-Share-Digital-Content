@@ -26,7 +26,7 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException(`User with id ${id} not found`);
     }
-    return User.removeHashedPassword(user);
+    return user;
   }
 
   async findMe(user: ActiveUserData) {

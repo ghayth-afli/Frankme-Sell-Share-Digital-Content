@@ -23,5 +23,6 @@ import { APP_GUARD } from '@nestjs/core';
       useClass: AccessTokenGuard,
     },
   ],
+  exports: [UsersService],
 })
 export class UsersModule {}

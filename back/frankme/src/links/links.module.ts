@@ -8,16 +8,19 @@ import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from 'src/iam/config/jwt.config';
 import { APP_GUARD } from '@nestjs/core';
 import { AccessTokenGuard } from 'src/iam/authentication/guards/access-token.guard';
+import { UsersService } from 'src/users/users.service';
+import { User } from 'src/users/entities/user.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Link]),
+    TypeOrmModule.forFeature([Link, User]),
     JwtModule.registerAsync(jwtConfig.asProvider()),
     ConfigModule.forFeature(jwtConfig),
   ],
   controllers: [LinksController],
   providers: [
     LinksService,
+    UsersService,
     {
       provide: APP_GUARD,
       useClass: AccessTokenGuard,

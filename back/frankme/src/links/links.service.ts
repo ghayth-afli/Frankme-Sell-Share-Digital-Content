@@ -5,13 +5,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Link } from './entities/link.entity';
 import { Repository } from 'typeorm';
 import { User } from 'src/users/entities/user.entity';
+import { UsersService } from 'src/users/users.service';
+import { ActiveUserData } from 'src/iam/interfaces/active-user-data.interface';
 
 @Injectable()
 export class LinksService {
   constructor(
     @InjectRepository(Link) private readonly linksRepository: Repository<Link>,
+    private readonly usersService: UsersService,
   ) {}
-  create(createLinkDto: CreateLinkDto, user: User) {
+  async create(createLinkDto: CreateLinkDto, user: ActiveUserData) {
     const {
       title,
       url,
@@ -20,6 +23,7 @@ export class LinksService {
       expirationDate = null,
       maxDownloadCount = null,
     } = createLinkDto;
+    const currentUser = await this.usersService.findOne(user.sub);
     const link = this.linksRepository.create({
       title,
       url,
@@ -29,13 +33,17 @@ export class LinksService {
       expirationDate,
       uploadedDate: new Date().toISOString().split('T')[0],
     });
-    link.user = user;
+    link.user = currentUser;
+    console.log(link);
+
     return this.linksRepository.save(link);
   }
 
-  async findAll(user: User) {
+  async findAll(user: ActiveUserData) {
+    const currentUser = await this.usersService.findOne(user.sub);
     const links = await this.linksRepository.find({
-      where: { user },
+      relations: { user: true },
+      where: { user: currentUser },
     });
     if (!links) {
       throw new NotFoundException('No links found');
@@ -43,10 +51,11 @@ export class LinksService {
     return links;
   }
 
-  async findOne(id: number, user: User) {
+  async findOne(id: number, user: ActiveUserData) {
+    const currentUser = await this.usersService.findOne(user.sub);
     const link = await this.linksRepository.findOne({
       where: {
-        user,
+        user: currentUser,
         id,
       },
     });
@@ -56,18 +65,19 @@ export class LinksService {
     return link;
   }
 
-  update(id: number, updateLinkDto: UpdateLinkDto, user: User) {
+  async update(id: number, updateLinkDto: UpdateLinkDto, user: ActiveUserData) {
+    const currentUser = await this.usersService.findOne(user.sub);
     const link = this.linksRepository.update(
       {
         id,
-        user,
+        user: currentUser,
       },
       updateLinkDto,
     );
     return link;
   }
 
-  async remove(id: number, user: User) {
+  async remove(id: number, user: ActiveUserData) {
     try {
       const link = await this.findOne(id, user);
       return this.linksRepository.remove(link);
