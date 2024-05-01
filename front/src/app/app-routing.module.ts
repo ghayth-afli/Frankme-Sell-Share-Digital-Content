@@ -43,6 +43,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'download',
+    loadChildren: () =>
+      import('./modules/download/download.module').then(
+        (m) => m.DownloadModule
+      ),
+  },
   { path: '**', redirectTo: '' },
 ];
 
