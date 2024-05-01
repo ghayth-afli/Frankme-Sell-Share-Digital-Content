@@ -10,22 +10,26 @@ import { AuthService } from './modules/auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './modules/about/about.component';
 import { ServiceComponent } from './modules/service/service.component';
-import { PricingComponent } from './modules/pricing/pricing.component';
-import { SharedModule } from "./shared/shared.module";
 import { ContactComponent } from './modules/contact/contact.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-    declarations: [AppComponent, AboutComponent, ServiceComponent, PricingComponent, ContactComponent],
-    providers: [AuthService],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        CoreModule,
-        AuthModule,
-        HttpClientModule,
-        SharedModule
-    ]
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    ServiceComponent,
+    ContactComponent,
+  ],
+  providers: [AuthService],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    CoreModule,
+    AuthModule,
+    HttpClientModule,
+    SharedModule,
+  ],
 })
 export class AppModule {}

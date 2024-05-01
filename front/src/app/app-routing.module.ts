@@ -41,15 +41,11 @@ const routes: Routes = [
       import('./modules/service/service.module').then((m) => m.ServiceModule),
   },
   {
-    path: 'pricing',
-    loadChildren: () =>
-      import('./modules/pricing/pricing.module').then((m) => m.PricingModule),
-  },
-  {
     path: 'contact',
     loadChildren: () =>
       import('./modules/contact/contact.module').then((m) => m.ContactModule),
   },
+
   { path: '**', redirectTo: '' },
 ];
 
