@@ -30,4 +30,7 @@ export class NavbarComponent {
       this.lastScrollPosition = currentScrollPosition;
     });
   }
+  isLoggedIn(): boolean {
+    return false;
+  }
 }
