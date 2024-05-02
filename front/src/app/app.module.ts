@@ -7,7 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AuthService } from './modules/auth/services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './modules/about/about.component';
 import { ServiceComponent } from './modules/service/service.component';
 import { ContactComponent } from './modules/contact/contact.component';
@@ -25,8 +24,6 @@ import { AuthGuard } from './core/guards/auth.guard';
     ServiceComponent,
     ContactComponent,
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

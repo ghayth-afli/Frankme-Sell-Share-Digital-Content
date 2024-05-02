@@ -59,7 +59,7 @@ const routes: Routes = [
       import('./modules/contact/contact.module').then((m) => m.ContactModule),
   },
 
-    path: 'download',
+   { path: 'download',
     loadChildren: () =>
       import('./modules/download/download.module').then(
         (m) => m.DownloadModule
