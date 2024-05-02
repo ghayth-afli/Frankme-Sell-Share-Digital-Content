@@ -3,6 +3,11 @@
 POST http://localhost:3000/authentication/sign-up 
 Content-Type: application/json
 
+{"email": "test77893145@gmail.com",
+"password": "7894456",
+"firstName": "aaaaaaaaaaaaaaa",
+"lastName": "ooooo",
+"phone": "1234567890"}
 {"email": "manel@manel.com",
 "password": "123456789Aze@",
 "firstName": "aaaa",
