@@ -78,19 +78,27 @@
       <div class="navbar-nav ms-auto">
         <!-- Conditionally display avatar -->
         <ng-container *ngIf="isLoggedIn(); else loginButtons">
-          <img
-                class="rounded-circle me-3"
-                width="30px"
-                src="../../../../assets/images/alex.jpg"
-              />
+          <a [routerLink]="['/user/dashboard']"
+            ><img
+              class="rounded-circle me-3"
+              width="30px"
+              src="../../../../assets/images/alex.jpg"
+          /></a>
         </ng-container>
         <!-- Hide sign-up and log-in buttons when user is logged in -->
         <ng-template #loginButtons>
           <li class="nav-item me-2 d-none d-sm-block">
-            <a [routerLink]="['/register']" class="btn btn-sm btn-light mb-0"><i class="bi bi-person-circle me-1"></i>Sign up</a>
+            <a [routerLink]="['/register']" class="btn btn-sm btn-light mb-0"
+              ><i class="bi bi-person-circle me-1"></i>Sign up</a
+            >
           </li>
           <li class="nav-item d-none d-sm-block">
-            <button class="btn btn-sm btn-primary mb-0" [routerLink]="['/login']">Log in!</button>
+            <button
+              class="btn btn-sm btn-primary mb-0"
+              [routerLink]="['/login']"
+            >
+              Log in!
+            </button>
           </li>
         </ng-template>
       </div>

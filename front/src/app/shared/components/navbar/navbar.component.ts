@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AuthService } from '../../../modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,8 @@ export class NavbarComponent {
 
   lastScrollPosition: number;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
+
 
   ngAfterViewInit() {
     window.addEventListener('scroll', () => {
@@ -31,6 +33,6 @@ export class NavbarComponent {
     });
   }
   isLoggedIn(): boolean {
-    return false;
+    return this.authService.isLoggedIn();
   }
 }
