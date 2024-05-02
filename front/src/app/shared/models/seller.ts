@@ -1,12 +1,8 @@
-export interface seller {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  role: string;
+import { User } from './user';
+
+export interface Seller extends User {
   profilePicture: string;
   hashedPassword: string;
-  phone: string;
   isTfaEnabled: boolean;
   tfaSecret: string;
   balance: number;

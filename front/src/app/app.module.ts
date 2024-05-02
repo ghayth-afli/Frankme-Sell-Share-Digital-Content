@@ -12,6 +12,11 @@ import { AboutComponent } from './modules/about/about.component';
 import { ServiceComponent } from './modules/service/service.component';
 import { ContactComponent } from './modules/contact/contact.component';
 import { SharedModule } from './shared/shared.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { TokenStorageService } from './core/services/TokenStorage.service';
+import { UserService } from './core/services/user.service';
+import { AuthGuard } from './core/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -31,5 +36,17 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     SharedModule,
   ],
+  providers: [
+    AuthService,
+    TokenStorageService,
+    UserService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true, // This is required to add multiple interceptors
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

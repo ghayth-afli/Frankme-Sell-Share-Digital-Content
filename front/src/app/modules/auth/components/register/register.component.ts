@@ -64,6 +64,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  // Submit register form
   onSubmit() {
     const { firstName, lastName, email, password, phoneNumber } =
       this.signupForm.value;
@@ -71,7 +72,7 @@ export class RegisterComponent implements OnInit {
       .register(firstName, lastName, email, password, phoneNumber)
       .subscribe({
         next: (response) => {
-          console.log(response);
+          console.log('yeeeeeeeee', response);
           this.hideForm();
         },
         error: (error) => console.error(error),

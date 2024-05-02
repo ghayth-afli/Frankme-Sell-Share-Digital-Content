@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,13 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   status: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
   drop() {
     this.status = !this.status;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

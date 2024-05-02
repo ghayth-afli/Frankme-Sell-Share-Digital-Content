@@ -260,3 +260,6 @@ label {
 .register-form {
   display: none;
 }
+.input-text.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
