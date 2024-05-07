@@ -3,10 +3,21 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SideBarComponent, FooterComponent],
-  exports: [HeaderComponent, SideBarComponent, FooterComponent],
+  declarations: [
+    HeaderComponent,
+    SideBarComponent,
+    FooterComponent,
+    LoaderComponent,
+  ],
+  exports: [
+    HeaderComponent,
+    SideBarComponent,
+    FooterComponent,
+    LoaderComponent,
+  ],
   imports: [CommonModule],
 })
 export class SharedModule {}

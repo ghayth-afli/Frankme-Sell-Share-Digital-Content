@@ -11,7 +11,7 @@ import { TokenStorageService } from '../../../../core/services/TokenStorage.serv
 })
 export class LoginComponent {
   public signinForm: FormGroup;
-
+  loader = false;
   acitivateRegister = false;
   registerForm() {
     this.acitivateRegister = true;
@@ -36,19 +36,26 @@ export class LoginComponent {
 
   onSubmit() {
     const { email, password } = this.signinForm.value;
+    // Show loading spinner
+    this.loader = true;
 
-    this.authService.login(email, password).subscribe({
-      next: (response) => {
-        console.log('Login successful', response);
-        this.tokenStorage.saveToken(response.accessToken);
-        this.tokenStorage.saveRefreshToken(response.refreshToken);
-        this.router.navigate(['/user/dashboard']);
-      },
-      error: (loginError) => {
-        console.error('Error during login', loginError);
-        // Handle login error
-        // Optionally, display an error message to the user
-      },
-    });
+    // Start the timeout for 5 seconds
+    setTimeout(() => {
+      // Hide loading spinner after 5 seconds
+      this.loader = false;
+
+      // Execute login after timeout ends
+      this.authService.login(email, password).subscribe({
+        next: (response) => {
+          console.log('Login successful', response);
+          this.tokenStorage.saveToken(response.accessToken);
+          this.tokenStorage.saveRefreshToken(response.refreshToken);
+          this.router.navigate(['/user/dashboard']);
+        },
+        error: (loginError) => {
+          console.error('Error during login', loginError);
+        },
+      });
+    }, 3000);
   }
 }

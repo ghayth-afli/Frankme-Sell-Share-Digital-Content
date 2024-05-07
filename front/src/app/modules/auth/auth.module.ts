@@ -9,6 +9,7 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,6 @@ import { AuthService } from './services/auth.service';
     NewPasswordComponent,
     RegisterComponent,
   ],
-  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
+  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule, SharedModule],
 })
 export class AuthModule {}
