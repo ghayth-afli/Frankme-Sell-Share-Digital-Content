@@ -62,7 +62,10 @@
         <a routerLink="../forgot-password">Forgot Password ?</a>
       </div>
       <div class="btn">
-        <button class="login-btn">Login</button>
+        <button class="login-btn">
+          <div *ngIf="!loader">Login</div>
+          <app-loader *ngIf="loader"></app-loader>
+        </button>
       </div>
       <div class="btn">
         <button class="google-btn">
