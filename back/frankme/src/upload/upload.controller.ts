@@ -14,6 +14,8 @@ import { UploadService } from './upload.service';
 import { Auth } from 'src/iam/authentication/decorators/auth.decorator';
 import { AuthType } from 'src/iam/authentication/enums/auth-type.enum';
 import { AccessTokenGuard } from 'src/iam/authentication/guards/access-token.guard';
+import { ActiveUser } from 'src/iam/authentication/decorators/active-user.decorator';
+import { ActiveUserData } from 'src/iam/interfaces/active-user-data.interface';
 
 @UseGuards(AccessTokenGuard)
 @Auth(AuthType.Bearer)
@@ -23,27 +25,27 @@ export class UploadController {
   @Post()
   @UseInterceptors(FilesInterceptor('files'))
   async uploadFile(
+    @ActiveUser() user: ActiveUserData,
     @UploadedFiles(
       new ParseFilePipe({
         validators: [
           new MaxFileSizeValidator({
-            maxSize: 100000,
+            maxSize: 100000000,
           }),
         ],
       }),
     )
     files: Array<Express.Multer.File>,
   ) {
-    for (const file of files) {
-      try {
-        await this.uploadService.upload(file.originalname, file.buffer);
-      } catch (error) {
-        console.error(error);
-        throw new HttpException(
-          'Unable to upload files',
-          HttpStatus.BAD_REQUEST,
-        );
-      }
+    try {
+      const result = await this.uploadService.uploadCompressed(user, files);
+      return result;
+    } catch (error) {
+      console.log(error);
+      throw new HttpException(
+        'error while compressing ',
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }
