@@ -6,11 +6,17 @@ import {
   ParseFilePipe,
   Post,
   UploadedFiles,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
+import { Auth } from 'src/iam/authentication/decorators/auth.decorator';
+import { AuthType } from 'src/iam/authentication/enums/auth-type.enum';
+import { AccessTokenGuard } from 'src/iam/authentication/guards/access-token.guard';
 
+@UseGuards(AccessTokenGuard)
+@Auth(AuthType.Bearer)
 @Controller('upload')
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
