@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { IamModule } from './iam/iam.module';
 import { UsersModule } from './users/users.module';
 import { LinksModule } from './links/links.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { LinksModule } from './links/links.module';
     IamModule,
     UsersModule,
     LinksModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],
