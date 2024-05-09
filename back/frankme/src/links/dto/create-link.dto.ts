@@ -6,7 +6,6 @@ import {
   IsOptional,
   IsPositive,
   IsString,
-  IsUrl,
 } from 'class-validator';
 import { CreateFileDto } from './create-file.dto';
 
@@ -14,8 +13,7 @@ export class CreateLinkDto {
   @IsString()
   @IsNotEmpty()
   title: string;
-  @IsUrl()
-  ipfsUrl: string;
+
   @IsPositive()
   price: number;
   @IsString()

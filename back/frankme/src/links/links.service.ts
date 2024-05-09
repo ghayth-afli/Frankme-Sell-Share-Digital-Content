@@ -20,7 +20,6 @@ export class LinksService {
   async create(createLinkDto: CreateLinkDto, user: ActiveUserData) {
     const {
       title,
-      ipfsUrl,
       price,
       isActive,
       expirationDate = null,
@@ -30,7 +29,7 @@ export class LinksService {
     const fileLinkedToUrl = files.map(
       (file) =>
         new File({
-          file: `${ipfsUrl}${file}`,
+          file: `$${file}`,
         }),
     );
     console.log(fileLinkedToUrl);
@@ -38,7 +37,6 @@ export class LinksService {
     const currentUser = await this.usersService.findOne(user.sub);
     const link = this.linksRepository.create({
       title,
-      ipfsUrl,
       price,
       isActive,
       maxDownloadCount,

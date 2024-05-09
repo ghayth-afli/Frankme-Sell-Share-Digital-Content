@@ -25,9 +25,9 @@ export class Link {
   @Column({
     // unique: true,
     nullable: false,
-    comment: 'Unique url related to Web3.storage',
+    comment: 'Unique url related to aws bucket',
   })
-  ipfsUrl: string;
+  bucketUrl: string;
   @Column({ nullable: false })
   price: number;
   @Column({})

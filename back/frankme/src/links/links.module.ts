@@ -9,7 +9,6 @@ import jwtConfig from 'src/iam/config/jwt.config';
 import { UsersService } from 'src/users/users.service';
 import { User } from 'src/users/entities/user.entity';
 import { File } from './entities/file.entity';
-import { LinkSubscriber } from './link.subscriber';
 
 @Module({
   imports: [
@@ -18,6 +17,6 @@ import { LinkSubscriber } from './link.subscriber';
     ConfigModule.forFeature(jwtConfig),
   ],
   controllers: [LinksController],
-  providers: [LinksService, UsersService, LinkSubscriber],
+  providers: [LinksService, UsersService],
 })
 export class LinksModule {}

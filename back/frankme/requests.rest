@@ -71,7 +71,7 @@ GET http://localhost:3000/links
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoibWFuZWxAZ21haWwuY29tIiwiaWF0IjoxNzE0ODIzNjE0LCJleHAiOjE3MTQ5MTAwMTQsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.Q4hEufmhzT2b3S_BtZOaIn2sSGg0tdtDOCjVMnsNTxI
 
 ### get link
-GET http://localhost:3000/links/2
+GET http://localhost:3000/links/4
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoibWFuZWxAZ21haWwuY29tIiwiaWF0IjoxNzE0ODIzNjE0LCJleHAiOjE3MTQ5MTAwMTQsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.Q4hEufmhzT2b3S_BtZOaIn2sSGg0tdtDOCjVMnsNTxI
 
 ### create link
@@ -81,7 +81,6 @@ Content-Type: application/json
 
 {
   "title": "project-editing",
-  "ipfsUrl": "https://bafybeidxj5e4fr3gixekssssssfdfewufiiizg5ix6huyqqfuniez5b.ipfs.w3s.link/",
   "price": 35,
   "isActive": true,
   "maxDownloadCount": 5,
