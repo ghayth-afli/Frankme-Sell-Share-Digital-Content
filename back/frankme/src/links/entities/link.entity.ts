@@ -22,12 +22,7 @@ export class Link {
     comment: 'Unique url related to frankme',
   })
   url: string;
-  @Column({
-    // unique: true,
-    nullable: false,
-    comment: 'Unique url related to aws bucket',
-  })
-  bucketUrl: string;
+
   @Column({ nullable: false })
   price: number;
   @Column({})

@@ -7,7 +7,7 @@ import { EntityManager, Repository } from 'typeorm';
 import { UsersService } from 'src/users/users.service';
 import { ActiveUserData } from 'src/iam/interfaces/active-user-data.interface';
 import { v4 as uuidv4 } from 'uuid';
-import { baseUrl } from './config/base-url.config';
+import { baseUrl, s3Bucket } from './config/base-url.config';
 import { File } from './entities/file.entity';
 
 @Injectable()
@@ -29,13 +29,15 @@ export class LinksService {
     const fileLinkedToUrl = files.map(
       (file) =>
         new File({
-          file: `$${file}`,
+          file: `${s3Bucket}${file}`,
         }),
     );
     console.log(fileLinkedToUrl);
+    const uniqueLink = this.generateLink();
 
     const currentUser = await this.usersService.findOne(user.sub);
     const link = this.linksRepository.create({
+      url: uniqueLink,
       title,
       price,
       isActive,
