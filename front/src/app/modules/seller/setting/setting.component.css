@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  background: #fff;
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.row {
+  display: flex;
+}
+
+.cl1 {
+  width: 21.6%;
+}
+
+.cl2 {
+  width: calc(100% - 21.6%);
+}
+
+.col {
+  border-right: 1px solid #999;
+}

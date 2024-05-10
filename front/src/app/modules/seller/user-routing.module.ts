@@ -13,6 +13,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./setting/setting.module').then((m) => m.SettingModule),
+      },
     ],
   },
 ];

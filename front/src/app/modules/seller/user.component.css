@@ -1,5 +1,6 @@
 .container {
   background-color: #f6f9fc;
+  height: 100vh;
 }
 
 app-header {

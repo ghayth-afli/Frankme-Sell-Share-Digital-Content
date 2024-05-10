@@ -1,0 +1,32 @@
+.col {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-left: 37px;
+  height: 59px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+}
+
+a {
+  color: #1f2c73;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+}
+.col:last-child {
+  border-bottom: none;
+}
+
+.col:hover {
+  background: #e0e6ec;
+}
+
+.active {
+  background: #e0e6ec;
+}
