@@ -7,6 +7,7 @@ import { IamModule } from './iam/iam.module';
 import { UsersModule } from './users/users.module';
 import { LinksModule } from './links/links.module';
 import { UploadModule } from './upload/upload.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { UploadModule } from './upload/upload.module';
     UsersModule,
     LinksModule,
     UploadModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
