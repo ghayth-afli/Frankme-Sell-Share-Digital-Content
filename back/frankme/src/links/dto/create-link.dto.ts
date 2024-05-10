@@ -13,7 +13,6 @@ export class CreateLinkDto {
   @IsString()
   @IsNotEmpty()
   title: string;
-
   @IsPositive()
   price: number;
   @IsString()

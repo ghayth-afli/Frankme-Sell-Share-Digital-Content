@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateLinkDto } from './dto/create-link.dto';
 import { UpdateLinkDto } from './dto/update-link.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -34,10 +38,11 @@ export class LinksService {
     );
     console.log(fileLinkedToUrl);
     const uniqueLink = this.generateLink();
-
+    const linkUniqueId = uniqueLink.split('/')[1];
     const currentUser = await this.usersService.findOne(user.sub);
     const link = this.linksRepository.create({
       url: uniqueLink,
+      linkUniqueId,
       title,
       price,
       isActive,
@@ -82,6 +87,40 @@ export class LinksService {
     return link;
   }
 
+  async findByLinkId(id: string) {
+    const link = await this.linksRepository.findOne({
+      where: {
+        linkUniqueId: id,
+      },
+      relations: { user: true, files: true },
+    });
+
+    if (!link) {
+      throw new NotFoundException(`No link with url ${id}`);
+    }
+    if (!link.isActive) {
+      throw new BadRequestException(`Link : ${id} is no longer active`);
+    }
+    if (link.numberOfDownload >= link.maxDownloadCount) {
+      throw new BadRequestException(`Max download reached for the link ${id}`);
+    }
+
+    link.numberOfCLicks += 1;
+
+    await this.entityManager.save(link);
+
+    const result = {
+      seller: link.user.firstName + ' ' + link.user.lastName,
+      fileLink: link.files[0].file,
+      fileName: link.files[0].file.substring(
+        link.files[0].file.lastIndexOf('/') + 1,
+      ),
+      type: 'zip',
+      price: link.price,
+    };
+    return result;
+  }
+
   async update(id: number, updateLinkDto: UpdateLinkDto, user: ActiveUserData) {
     const currentUser = await this.usersService.findOne(user.sub);
     const link = this.linksRepository.update(
@@ -120,7 +159,7 @@ export class LinksService {
     return result;
   }
 
-  generateLink(): string {
+  private generateLink(): string {
     const uniqueId = uuidv4();
     return `${baseUrl}/${uniqueId}`;
   }

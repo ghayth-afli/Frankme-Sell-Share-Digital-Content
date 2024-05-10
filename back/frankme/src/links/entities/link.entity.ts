@@ -22,7 +22,8 @@ export class Link {
     comment: 'Unique url related to frankme',
   })
   url: string;
-
+  @Column({ nullable: true })
+  linkUniqueId: string;
   @Column({ nullable: false })
   price: number;
   @Column({})
