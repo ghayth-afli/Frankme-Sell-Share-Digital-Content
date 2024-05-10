@@ -6,18 +6,15 @@ import { SettingComponent } from './setting.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SecurityComponent } from './security/security.component';
 import { SettingNavComponent } from './setting-nav/setting-nav.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     SettingComponent,
     EditProfileComponent,
     SecurityComponent,
-    SettingNavComponent
+    SettingNavComponent,
   ],
-  imports: [
-    CommonModule,
-    SettingRoutingModule
-  ]
+  imports: [CommonModule, SettingRoutingModule, ReactiveFormsModule],
 })
-export class SettingModule { }
+export class SettingModule {}

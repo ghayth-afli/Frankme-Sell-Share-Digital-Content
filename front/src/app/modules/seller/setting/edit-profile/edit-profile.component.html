@@ -1,1 +1,91 @@
-<p>edit-profile works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row-1">
+        <div class="col-1">
+          <div class="title">
+            <h1>Edit Profile</h1>
+          </div>
+        </div>
+        <div class="col-1">
+          <div class="image-profile">
+            <img
+              src="../../../../../assets/images/profil.png"
+              width="91px"
+              height="91px"
+              alt="profile"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="form" [formGroup]="profileForm" (ngSubmit)="save()">
+      <div class="col">
+        <div class="row-2">
+          <div class="col-2">
+            <div class="input-filed last-child">
+              <label for="first-name">First Name :</label>
+              <input
+                class="input-text"
+                type="text"
+                placeholder="Enter your first-name"
+                id="first-name"
+                formControlName="first-name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="input-filed last-child">
+              <label for="last-name">Last Name :</label>
+              <input
+                class="input-text"
+                type="text"
+                placeholder="Enter your last name"
+                id="last-name"
+                formControlName="last-name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="input-filed last-child">
+              <label for="email">E-mail :</label>
+              <input
+                class="input-text"
+                type="text"
+                placeholder="Enter your email"
+                id="email"
+                formControlName="email"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="input-filed last-child">
+              <label for="phone">Phone :</label>
+              <input
+                class="input-text"
+                type="text"
+                placeholder="Enter your phone"
+                id="phone"
+                formControlName="phone"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row-3">
+          <div class="col-3">
+            <button type="reset" class="btn btn-primary">Cancel</button>
+          </div>
+          <div class="col-3">
+            <button type="submit" class="btn btn-secondary">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
