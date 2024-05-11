@@ -1,10 +1,10 @@
-import { IsNotEmpty, IsPositive, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsPositive, IsString } from 'class-validator';
 
 export class CreatePaymentDto {
   @IsNotEmpty()
   @IsPositive()
   amount: number;
   @IsNotEmpty()
-  @IsUrl()
+  @IsString()
   originUrl: string;
 }
