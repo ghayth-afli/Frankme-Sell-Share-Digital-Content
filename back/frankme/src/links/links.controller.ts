@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { LinksService } from './links.service';
 import { CreateLinkDto } from './dto/create-link.dto';
@@ -37,8 +38,12 @@ export class LinksController {
 
   @Auth(AuthType.None)
   @Get('/download/:id')
-  findLink(@Param('id') id: string) {
-    return this.linksService.findByLinkId(id);
+  findLink(@Param('id') id: string, @Query('payment_id') paymentId?: string) {
+    if (!paymentId) {
+      return this.linksService.findByLinkId(id);
+    } else {
+      return this.linksService.findLinkVerifiedPayment(id, paymentId);
+    }
   }
   @UseGuards(AccessTokenGuard)
   @Get()

@@ -13,13 +13,18 @@ import { ActiveUserData } from 'src/iam/interfaces/active-user-data.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { baseUrl, s3Bucket } from './config/base-url.config';
 import { File } from './entities/file.entity';
+import { Event } from './entities/event.entity';
+import { PaymentService } from 'src/payment/payment.service';
 
 @Injectable()
 export class LinksService {
   constructor(
     @InjectRepository(Link) private readonly linksRepository: Repository<Link>,
+    @InjectRepository(Event)
+    private readonly eventsRepository: Repository<Event>,
     private readonly entityManager: EntityManager,
     private readonly usersService: UsersService,
+    private readonly paymentService: PaymentService,
   ) {}
   async create(createLinkDto: CreateLinkDto, user: ActiveUserData) {
     const {
@@ -36,13 +41,10 @@ export class LinksService {
           file: `${s3Bucket}${file}`,
         }),
     );
-    console.log(fileLinkedToUrl);
     const uniqueLink = this.generateLink();
-    const linkUniqueId = uniqueLink.split('/')[1];
     const currentUser = await this.usersService.findOne(user.sub);
     const link = this.linksRepository.create({
-      url: uniqueLink,
-      linkUniqueId,
+      linkUniqueId: uniqueLink,
       title,
       price,
       isActive,
@@ -159,8 +161,56 @@ export class LinksService {
     return result;
   }
 
+  async findLinkVerifiedPayment(id: string, paymentId: string) {
+    const paymentStatus = await this.paymentService.verifyPayment({
+      paymentId,
+    });
+    if (paymentStatus.isVerified) {
+      const url = `${baseUrl}/downloads/${id}?payment_id=${paymentId}`;
+      // const event = await this.getEvent(url);
+      // if (event) {
+      //   throw new NotFoundException('This url doesnt exist');
+      // } else {
+      const link = await this.findByLinkId(id);
+      await this.addEvent(url);
+      return link.fileName;
+      // }
+    } else {
+      throw new NotFoundException(`Cant find payment with id ${paymentId}`);
+    }
+  }
+
   private generateLink(): string {
     const uniqueId = uuidv4();
-    return `${baseUrl}/${uniqueId}`;
+    return uniqueId;
+  }
+
+  private async getEvent(url: string) {
+    const event = await this.eventsRepository.findOne({
+      where: {
+        url,
+      },
+    });
+    console.log('event: ', event);
+
+    return event ? event : false;
+  }
+
+  private async addEvent(url: string) {
+    const currentDate = new Date();
+    const dateOptions: Intl.DateTimeFormatOptions = {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+    const event = new Event({
+      url,
+      date: currentDate.toLocaleString('en-US', dateOptions),
+    });
+    const eventAdded = this.eventsRepository.create(event);
+    await this.eventsRepository.save(eventAdded);
   }
 }

@@ -16,12 +16,7 @@ export class Link {
   user: User;
   @Column({ nullable: false })
   title: string;
-  @Column({
-    // unique: true,
-    nullable: false,
-    comment: 'Unique url related to frankme',
-  })
-  url: string;
+
   @Column({ nullable: true })
   linkUniqueId: string;
   @Column({ nullable: false })
