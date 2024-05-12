@@ -44,7 +44,22 @@ const routes: Routes = [
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'download',
+    path: 'about',
+    loadChildren: () =>
+      import('./modules/about/about.module').then((m) => m.AboutModule),
+  },
+  {
+    path: 'service',
+    loadChildren: () =>
+      import('./modules/service/service.module').then((m) => m.ServiceModule),
+  },
+  {
+    path: 'contact',
+    loadChildren: () =>
+      import('./modules/contact/contact.module').then((m) => m.ContactModule),
+  },
+
+   { path: 'download',
     loadChildren: () =>
       import('./modules/download/download.module').then(
         (m) => m.DownloadModule

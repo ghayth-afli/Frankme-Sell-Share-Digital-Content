@@ -8,12 +8,16 @@ import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from 'src/iam/config/jwt.config';
 import { UsersService } from 'src/users/users.service';
 import { User } from 'src/users/entities/user.entity';
+import { File } from './entities/file.entity';
+import { Event } from './entities/event.entity';
+import { PaymentModule } from 'src/payment/payment.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Link, User]),
+    TypeOrmModule.forFeature([Link, User, File, Event]),
     JwtModule.registerAsync(jwtConfig.asProvider()),
     ConfigModule.forFeature(jwtConfig),
+    PaymentModule,
   ],
   controllers: [LinksController],
   providers: [LinksService, UsersService],

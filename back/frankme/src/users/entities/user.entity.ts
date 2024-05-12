@@ -36,9 +36,6 @@ export class User {
   @Column({ default: 0 })
   balance: number;
 
-  @Column({ default: '0x0000000000000000000000000000000000000000' })
-  walletAddress: string;
-
   @OneToMany(() => Link, (link) => link.user)
   links: Link[];
 

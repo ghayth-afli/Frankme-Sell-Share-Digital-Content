@@ -1,5 +1,12 @@
 import { User } from 'src/users/entities/user.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { File } from './file.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Link {
@@ -9,8 +16,9 @@ export class Link {
   user: User;
   @Column({ nullable: false })
   title: string;
-  @Column({ nullable: false })
-  url: string;
+
+  @Column({ nullable: true })
+  linkUniqueId: string;
   @Column({ nullable: false })
   price: number;
   @Column({})
@@ -25,4 +33,7 @@ export class Link {
   numberOfCLicks: number;
   @Column({ default: 0 })
   numberOfDownload: number;
+
+  @OneToMany(() => File, (file) => file.link, { cascade: true })
+  files: File[];
 }
