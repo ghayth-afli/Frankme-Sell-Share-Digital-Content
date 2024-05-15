@@ -1,22 +1,38 @@
 <div class="col-upload">
   <div class="Stepper">
-    <div class="Stepper-ctn active">
+    <div
+      class="Stepper-ctn"
+      [ngClass]="{
+        'Stepper-ctn active': steps.step1 || steps.step2 || steps.step3
+      }"
+    >
       <div class="Stepper-btn">1</div>
       <div class="Stepper-Header-Title">Upload</div>
     </div>
-    <div class="horizontal-line active-line"></div>
-    <div class="Stepper-ctn active">
+    <div
+      class="horizontal-line active-line"
+      [ngClass]="{ 'active-line': steps.step2 || steps.step3 }"
+    ></div>
+    <div
+      class="Stepper-ctn"
+      [ngClass]="{ 'Stepper-ctn active': steps.step2 || steps.step3 }"
+    >
       <div class="Stepper-btn">2</div>
       <div class="Stepper-Header-Title">Infos</div>
     </div>
-    <div class="horizontal-line"></div>
-    <div class="Stepper-ctn">
+    <div
+      class="horizontal-line"
+      [ngClass]="{ 'active-line': steps.step3 }"
+    ></div>
+    <div class="Stepper-ctn" [ngClass]="{ 'Stepper-ctn active': steps.step3 }">
       <div class="Stepper-btn">3</div>
       <div class="Stepper-Header-Title">Done</div>
     </div>
   </div>
 
   <div class="step">
-    <app-step-1></app-step-1>
+    <app-step-1 (next)="nextStep($event)" *ngIf="steps.step1"></app-step-1>
+    <app-step-2 (submit)="OnSubmit($event)" *ngIf="steps.step2"></app-step-2>
+    <app-step-3 *ngIf="steps.step3"></app-step-3>
   </div>
 </div>
