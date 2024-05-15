@@ -30,7 +30,6 @@ export class LinksService {
     const {
       title,
       price,
-      isActive,
       expirationDate = null,
       maxDownloadCount = null,
       files,
@@ -47,7 +46,6 @@ export class LinksService {
       linkUniqueId: uniqueLink,
       title,
       price,
-      isActive,
       maxDownloadCount,
       expirationDate,
       uploadedDate: new Date().toISOString().split('T')[0],

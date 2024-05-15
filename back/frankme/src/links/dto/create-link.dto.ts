@@ -18,8 +18,7 @@ export class CreateLinkDto {
   @IsString()
   @IsOptional()
   expirationDate?: string;
-  @IsBoolean()
-  isActive: boolean;
+
   @IsPositive()
   @IsOptional()
   maxDownloadCount?: number;
