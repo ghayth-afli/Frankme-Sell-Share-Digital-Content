@@ -10,8 +10,10 @@
   <div class="row-stat">
     <div class="stat">
       <div class="left-col">
-        <div class="stat-title">Total Users</div>
-        <div class="stat-value">1543386</div>
+        <div class="stat-title">Total Uploads</div>
+        <div class="stat-value" *ngIf="summary$ | async as summary">
+          {{ summary.totalUploads }}
+        </div>
       </div>
       <div class="right-col">
         <div class="stat-icon">
@@ -25,7 +27,9 @@
     <div class="stat">
       <div class="left-col">
         <div class="stat-title">Active Links</div>
-        <div class="stat-value">162421</div>
+        <div class="stat-value" *ngIf="summary$ | async as summary">
+          {{ summary.activeLinks }}
+        </div>
       </div>
       <div class="right-col">
         <div class="stat-icon">
@@ -36,7 +40,9 @@
     <div class="stat">
       <div class="left-col">
         <div class="stat-title">Total Clicks</div>
-        <div class="stat-value">1943386</div>
+        <div class="stat-value" *ngIf="summary$ | async as summary">
+          {{ summary.totalClicks }}
+        </div>
       </div>
       <div class="right-col">
         <div class="stat-icon">
@@ -47,7 +53,9 @@
     <div class="stat">
       <div class="left-col">
         <div class="stat-title">Total Downloads</div>
-        <div class="stat-value">12433</div>
+        <div class="stat-value" *ngIf="summary$ | async as summary">
+          {{ summary.totalDownloads }}
+        </div>
       </div>
       <div class="right-col">
         <div class="stat-icon">

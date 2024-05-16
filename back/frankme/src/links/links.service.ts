@@ -152,9 +152,11 @@ export class LinksService {
       totalDownloads: 0,
     };
     links.forEach((link) => {
+      console.log('link: ', link);
+
       result.activeLinks++ ? link.isActive : 0;
-      result.totalClicks = link.numberOfCLicks;
-      result.totalDownloads = link.numberOfDownload;
+      result.totalClicks += link.numberOfCLicks;
+      result.totalDownloads += link.numberOfDownload;
     });
     return result;
   }
@@ -172,6 +174,13 @@ export class LinksService {
       //   throw new NotFoundException('This url doesnt exist');
       // } else {
       const link = await this.findByLinkId(id);
+      const link_related = await this.linksRepository.findOne({
+        where: {
+          linkUniqueId: id,
+        },
+      });
+      link_related.numberOfDownload += 1;
+      await this.entityManager.save(link_related);
       await this.addEvent(url);
       return link.fileName;
       // }

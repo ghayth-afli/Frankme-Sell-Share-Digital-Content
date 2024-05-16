@@ -6,10 +6,11 @@ import { UserComponent } from './user.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AssetService } from './services/asset.service';
+import { LinkSummaryService } from './services/link-summary';
 
 @NgModule({
   declarations: [UserComponent],
   imports: [CommonModule, UserRoutingModule, DashboardModule, SharedModule],
-  providers: [AssetService],
+  providers: [AssetService, LinkSummaryService],
 })
 export class UserModule {}
