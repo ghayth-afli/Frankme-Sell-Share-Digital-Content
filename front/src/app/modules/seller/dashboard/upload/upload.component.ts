@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AssetService } from '../../services/asset.service';
 import { FormGroup } from '@angular/forms';
+import { Link } from '../../../../shared/models/link';
+import { API_BASE_URL, MyBASE_URL } from '../../../../config/config';
 
 @Component({
   selector: 'app-upload',
@@ -8,7 +10,8 @@ import { FormGroup } from '@angular/forms';
   styleUrl: './upload.component.css',
 })
 export class UploadComponent {
-  zipppedFile: File;
+  zipppedFile: { fileName: string };
+  linkUniqueId: string;
   steps = {
     step1: true,
     step2: false,
@@ -32,6 +35,20 @@ export class UploadComponent {
   }
 
   OnSubmit(form: FormGroup) {
-    console.log(form.value);
+    let infosData: Link = {
+      title: form.value.title,
+      price: form.value.price,
+      expirationDate: form.value.expirationDate,
+      maxDownloadCount: form.value.maxDownloadCount,
+      files: [this.zipppedFile.fileName], // Change the type from Array<string> to string[]
+    };
+    this.assetService.postAsset(infosData).subscribe({
+      next: (response) => {
+        console.log('Asset response', response.linkUniqueId);
+        this.linkUniqueId = MyBASE_URL + '/#/download/' + response.linkUniqueId;
+        this.steps.step2 = false;
+        this.steps.step3 = true;
+      },
+    });
   }
 }

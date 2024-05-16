@@ -12,6 +12,11 @@
         placeholder="Enter Asset Name"
         formControlName="title"
       />
+      <span
+        *ngIf="!infoForm.get('title')?.valid && infoForm.get('title')?.touched"
+        class="error"
+        >Title is required</span
+      >
     </div>
     <div class="form-group">
       <div class="title">
@@ -24,18 +29,31 @@
         placeholder="Enter Asset price"
         formControlName="price"
       />
+      <span
+        *ngIf="!infoForm.get('price')?.valid && infoForm.get('price')?.touched"
+        class="error"
+        >Price is required</span
+      >
     </div>
     <div class="form-group">
       <div class="title">
-        <label for="title">Expired After (Hours) :</label>
+        <label for="exp">Expiration Date :</label>
       </div>
       <input
-        type="number"
+        type="date"
         class="form-control"
-        id="title"
-        placeholder="Number of hours after which asset will be expired"
-        formControlName="nbExpHours"
+        id="exp"
+        placeholder="Expiration Date"
+        formControlName="expirationDate"
       />
+      <span
+        *ngIf="
+          !infoForm.get('expirationDate')?.valid &&
+          infoForm.get('expirationDate')?.touched
+        "
+        class="error"
+        >Expiration Date is required</span
+      >
     </div>
     <div class="form-group">
       <div class="title">
@@ -48,6 +66,14 @@
         placeholder="Number of maximum downloads"
         formControlName="maxDownloadCount"
       />
+      <span
+        *ngIf="
+          !infoForm.get('maxDownloadCount')?.valid &&
+          infoForm.get('maxDownloadCount')?.touched
+        "
+        class="error"
+        >Max Download is required</span
+      >
     </div>
   </div>
   <div class="btns">

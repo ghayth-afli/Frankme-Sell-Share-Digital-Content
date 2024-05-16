@@ -4,17 +4,21 @@
       <div class="folder-icon">
         <img
           src="../../../assets/icons/folder.png"
-          width="56pxpx"
-          height="56pxpx"
+          width="56px"
+          height="56px"
           alt=""
         />
       </div>
       <div class="detail">
-        <div class="col-detail"><span class="label">-File :</span>rapport</div>
-        <div class="col-detail"><span class="label">-Size :</span>20 MB</div>
-        <div class="col-detail"><span class="label">-Type :</span>zip</div>
         <div class="col-detail">
-          <span class="label">-Seller Name :</span>mohamed ghayth afli
+          <span class="label">-File :</span>{{ asset.fileName }}
+        </div>
+        <div class="col-detail"><span class="label">-Size :</span>20 MB</div>
+        <div class="col-detail">
+          <span class="label">-Type :</span>{{ asset.type }}
+        </div>
+        <div class="col-detail">
+          <span class="label">-Seller Name :</span>{{ asset.seller }}
         </div>
       </div>
     </div>

@@ -18,8 +18,12 @@ export class Step1Component {
 
   goNext() {
     const formData = new FormData();
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      formData.append('files', this.selectedFiles[i]);
+    if (this.filesArray.length > 0) {
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        formData.append('files', this.selectedFiles[i]);
+      }
+    } else {
+      alert('Please select at least one file');
     }
     this.next.emit(formData);
   }

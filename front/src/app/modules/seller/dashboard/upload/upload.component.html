@@ -33,6 +33,6 @@
   <div class="step">
     <app-step-1 (next)="nextStep($event)" *ngIf="steps.step1"></app-step-1>
     <app-step-2 (submit)="OnSubmit($event)" *ngIf="steps.step2"></app-step-2>
-    <app-step-3 *ngIf="steps.step3"></app-step-3>
+    <app-step-3 [linkUniqueId]="linkUniqueId" *ngIf="steps.step3"></app-step-3>
   </div>
 </div>

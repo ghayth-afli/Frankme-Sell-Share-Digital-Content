@@ -1,7 +1,7 @@
-export interface link {
+export interface Link {
   title: string;
   price: number;
-  nbExpHours: number;
+  expirationDate: string;
   maxDownloadCount: number;
-  files: string;
+  files: Array<string>;
 }

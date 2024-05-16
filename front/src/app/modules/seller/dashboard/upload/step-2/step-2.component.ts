@@ -15,7 +15,7 @@ export class Step2Component implements OnInit {
     this.infoForm = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.required]),
       price: new FormControl('', [Validators.required]),
-      nbExpHours: new FormControl('', [Validators.required]),
+      expirationDate: new FormControl('', [Validators.required]),
       maxDownloadCount: new FormControl('', [Validators.required]),
     });
   }

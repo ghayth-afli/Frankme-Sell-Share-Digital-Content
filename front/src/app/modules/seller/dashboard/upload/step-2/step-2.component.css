@@ -68,3 +68,13 @@ label {
   align-items: center;
   border: none;
 }
+
+.form-control.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+span {
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Poppins;
+}
