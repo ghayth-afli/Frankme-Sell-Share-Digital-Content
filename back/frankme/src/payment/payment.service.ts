@@ -50,15 +50,20 @@ export class PaymentService {
     try {
       const paymentVerificationResult = await this.httpService.axiosRef.get(
         `https://developers.flouci.com/api/verify_payment/${paymentId}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            apppublic: this.configService.getOrThrow('APP_TOKEN'),
+            appsecret: this.configService.getOrThrow('APP_SECRET'),
+          },
+        },
       );
 
       const paymentData = await paymentVerificationResult.data;
-      console.log(paymentData);
 
       if (paymentData.result.status) {
         result.isVerified = true;
       }
-      console.log('result: ', result);
 
       return result;
     } catch (error) {

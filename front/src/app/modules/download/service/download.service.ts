@@ -15,4 +15,12 @@ export class DownloadService {
   payForFile(payment: Payment) {
     return this.http.post(API_BASE_URL + '/payment', payment);
   }
+
+  downloadFile(linkId: string, paymentId: string) {
+    return this.http.get(API_BASE_URL + `/links/download/${linkId}`, {
+      params: {
+        payment_id: paymentId,
+      },
+    });
+  }
 }

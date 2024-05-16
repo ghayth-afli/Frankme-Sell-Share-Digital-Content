@@ -43,7 +43,12 @@
           />
         </div>
       </div>
-      <div class="click-message">PAY TO DOWNLOAD</div>
+      <div class="click-message" (click)="paytodownload()" *ngIf="!paymentId">
+        PAY TO DOWNLOAD
+      </div>
+      <div class="click-message" (click)="download()" *ngIf="paymentId">
+        DOWNLOAD
+      </div>
     </div>
     <div class="adhesive-bottom-right center">
       <div class="price">25 <span>TND</span></div>

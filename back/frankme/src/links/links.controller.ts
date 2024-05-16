@@ -38,11 +38,19 @@ export class LinksController {
 
   @Auth(AuthType.None)
   @Get('/download/:id')
-  findLink(@Param('id') id: string, @Query('payment_id') paymentId?: string) {
+  async findLink(
+    @Param('id') id: string,
+    @Query('payment_id') paymentId?: string,
+  ) {
     if (!paymentId) {
       return this.linksService.findByLinkId(id);
     } else {
-      return this.linksService.findLinkVerifiedPayment(id, paymentId);
+      console.log('paymentId  found');
+      const result = await this.linksService.findLinkVerifiedPayment(
+        id,
+        paymentId,
+      );
+      return { result };
     }
   }
   @UseGuards(AccessTokenGuard)

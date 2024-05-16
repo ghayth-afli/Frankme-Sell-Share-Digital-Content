@@ -160,6 +160,8 @@ export class LinksService {
   }
 
   async findLinkVerifiedPayment(id: string, paymentId: string) {
+    console.log('paymentId: from verifivatoion ', paymentId);
+
     const paymentStatus = await this.paymentService.verifyPayment({
       paymentId,
     });
