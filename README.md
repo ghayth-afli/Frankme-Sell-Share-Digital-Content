@@ -3,6 +3,7 @@
 ## Overview
 FRAKNME is a file-sharing app designed for content creators such as photographers, designers, and social media influencers. Our main goal is to provide a secure and trustworthy platform where users can sell their creations without the risk of being exploited or deceived.
 ![Overview Image](images/overview-image.png)
+![Overview Image](images/overview-2-image.png)
 
 ## Table of Contents
 - [Project Structure](#project-structure)
