@@ -19,4 +19,8 @@ export class AssetService {
       linkUniqueId: string;
     }>(API_BASE_URL + '/links', assetInfo);
   }
+
+  getlinks() {
+    return this.http.get(API_BASE_URL + '/links');
+  }
 }

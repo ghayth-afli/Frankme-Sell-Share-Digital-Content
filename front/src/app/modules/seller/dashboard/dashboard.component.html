@@ -69,6 +69,33 @@
   </div>
   <div class="row-link">
     <app-upload></app-upload>
-    <div class="col-link-table"></div>
+    <div class="col-link-table">
+      <div class="title">
+        <h4>Recent Links</h4>
+      </div>
+      <div class="table">
+        <div class="theader">
+          <div class="col">Title</div>
+          <div class="col">Link</div>
+          <div class="col">Clicks</div>
+          <div class="col">Incomes</div>
+        </div>
+        <div class="tbody" *ngIf="links$ | async as links">
+          <div class="trow" *ngFor="let link of links.slice(-6)">
+            <div class="col">
+              {{ link.title }}
+            </div>
+            <div class="col">
+              <a
+                [href]="'http://127.0.0.1:4200/#/download/' + link.linkUniqueId"
+                >visit</a
+              >
+            </div>
+            <div class="col">{{ link.numberOfCLicks }}</div>
+            <div class="col">{{ link.numberOfDownload * link.price }} TND</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

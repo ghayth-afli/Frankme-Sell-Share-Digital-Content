@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LinkSummaryService } from '../services/link-summary';
+import { AssetService } from '../services/asset.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,13 @@ import { LinkSummaryService } from '../services/link-summary';
 })
 export class DashboardComponent implements OnInit {
   summary$: Observable<any>;
-  constructor(private linkSummaryService: LinkSummaryService) {}
+  links$: Observable<any>;
+  constructor(
+    private linkSummaryService: LinkSummaryService,
+    private assetService: AssetService
+  ) {}
   ngOnInit() {
     this.summary$ = this.linkSummaryService.getLinkSummary();
+    this.links$ = this.assetService.getlinks();
   }
 }

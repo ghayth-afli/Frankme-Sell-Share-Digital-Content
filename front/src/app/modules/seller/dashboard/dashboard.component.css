@@ -89,3 +89,63 @@
 app-upload {
   width: 30%;
 }
+
+/*table*/
+.col-link-table {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 23px 15px 22px;
+}
+
+.title h1 {
+  color: #1f2c73;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.theader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e6ec;
+}
+
+.tbody {
+  display: flex;
+  flex-direction: column;
+}
+
+.trow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e6ec;
+}
+
+.theader .col {
+  color: #1f2c73;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.trow .col {
+  color: #7184ad;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
